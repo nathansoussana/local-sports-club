@@ -10,9 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_172214) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_175544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "sport_id", null: false
+    t.string "name"
+    t.string "address"
+    t.string "level"
+    t.date "date"
+    t.integer "participant_number"
+    t.integer "duration"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_events_on_sport_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participants_on_event_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
+  create_table "sports", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_sports", force: :cascade do |t|
+    t.bigint "sport_id", null: false
+    t.bigint "user_id", null: false
+    t.string "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_user_sports_on_sport_id"
+    t.index ["user_id"], name: "index_user_sports_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +63,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_172214) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.string "gender"
+    t.text "about"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "sports"
+  add_foreign_key "events", "users"
+  add_foreign_key "participants", "events"
+  add_foreign_key "participants", "users"
+  add_foreign_key "user_sports", "sports"
+  add_foreign_key "user_sports", "users"
 end
