@@ -35,7 +35,6 @@
 }
 
 .icon-container {
-  color: #f5f1f1;
   font-size: 15px;
   display: flex;
   justify-content: center;
@@ -48,10 +47,12 @@
 
   i {
     font-size: 30px;
+    color: #FA8072;
   }
 
   p {
     margin-left: 80px;
     margin-right: 80px;
+    color: white;
   }
 }
