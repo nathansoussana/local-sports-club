@@ -3,19 +3,55 @@
   background-position: center;
   padding: 150px 0;
   width: 100vw;
+  height: 100vh;
+
 }
 
 .banner h1 {
-  margin: 0;
+  margin: 10;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   font-size: 32px;
   font-weight: bold;
+
 }
 
-.banner p {
+.banner h2 {
+  margin: 20;
   font-size: 20px;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin-top: 1.5pc;
+}
+
+.banner h3 {
+  margin-top: 1.5pc;
+  font-size: 20px;
+  color: #FA8072;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
+}
+
+.icon-container {
+  color: #f5f1f1;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-weight: 700;
+
+  i {
+    font-size: 30px;
+  }
+
+  p {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
 }
