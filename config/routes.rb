@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
 
-  resources :pages, only: [:home, :components]
+  get '/pages/components', to: 'pages#components'
+
   resources :events
 end
