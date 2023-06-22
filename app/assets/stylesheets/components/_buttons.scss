@@ -1,34 +1,38 @@
 .btn-signup {
-  color: white;
-  padding: 8px 20px;
+  margin-top: 1.5pc;
+  color: #FAF0CA;
+  padding: 14px 20px;
   border-radius: 5px;
-  background: #0e0e0e;
+  background: #6B2D5C;
   transition: background 0.3s ease;
   margin-top: 3.5pc;
+  text-decoration: none;
 }
 
 .btn-login {
-  color: white;
-  padding: 8px 20px;
+  margin-top: 1.5pc;
+  color: #FAF0CA;
+  padding: 14px 20px;
   border-radius: 5px;
-  background: #0e0e0e;
+  background: #6B2D5C;
   transition: background 0.3s ease;
   margin-top: 3.5pc;
+  text-decoration: none;
 }
 
 .btn-signup:hover {
-  color: white;
-  background: #5f55af;
-  background: linear-gradient(to right, #ffffff 50%, #090909 50%);
+  color: #FAF0CA;
+  background: #6B2D5C;
+  background: linear-gradient(to right, #ffffff 50%, #6B2D5C 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 1.2s ease;
 }
 
 .btn-login:hover {
-  color: white;
-  background: #5f55af;
-  background: linear-gradient(to right, #ffffff 50%, #090909 50%);
+  color: #FAF0CA;
+  background: #6B2D5C;
+  background: linear-gradient(to right, #ffffff 50%, #6B2D5C 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 1.2s ease;
