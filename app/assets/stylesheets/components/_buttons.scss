@@ -1,13 +1,31 @@
-.btn-flat {
+.btn-signup {
   color: white;
   padding: 8px 20px;
   border-radius: 5px;
   background: #0e0e0e;
   transition: background 0.3s ease;
-  margin-top: 1.5pc;
+  margin-top: 3.5pc;
 }
 
-.btn-flat:hover {
+.btn-login {
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background: #0e0e0e;
+  transition: background 0.3s ease;
+  margin-top: 3.5pc;
+}
+
+.btn-signup:hover {
+  color: white;
+  background: #5f55af;
+  background: linear-gradient(to right, #ffffff 50%, #090909 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1.2s ease;
+}
+
+.btn-login:hover {
   color: white;
   background: #5f55af;
   background: linear-gradient(to right, #ffffff 50%, #090909 50%);
