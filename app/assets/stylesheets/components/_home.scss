@@ -1,9 +1,14 @@
 .banner {
   background-size: cover;
-  background-position: center;
-  padding: 150px 0;
+  padding: 250px 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  background-image: image-url("home-background-tennis.jpg");
+
+  .background-image {
+    opacity: 0.6;
+  }
 }
 
 .banner h1 {
