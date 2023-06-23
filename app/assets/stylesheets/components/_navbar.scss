@@ -10,3 +10,15 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+/*Navbar for the homepage only*/
+.navbar-home {
+  box-shadow: none;
+  position: absolute;
+  width: 100%;
+
+  .nav-link {
+    color: rgb(0, 0, 0);
+  }
+
+}
