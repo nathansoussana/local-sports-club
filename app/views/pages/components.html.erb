@@ -1,111 +1,114 @@
-<%# Text %>
-<div class="my-4">
+<div class="container-xxl">
+  
+  <%# Text %>
+  <div class="my-4">
 
-<h1>Components</h1>
-<div class="horizontal-spacer"></div>
-<h5>Secondary header</h5>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <h1>Components</h1>
+  <div class="horizontal-spacer"></div>
+  <h5>Secondary header</h5>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-<div class="horizontal-spacer"></div>
+  <div class="horizontal-spacer"></div>
 
-<%# Search Bar %>
-<%= render partial: "shared/search_bar" %>
+  <%# Search Bar %>
+  <%= render partial: "shared/search_bar" %>
 
-<div class="horizontal-spacer"></div>
+  <div class="horizontal-spacer"></div>
 
-<%# Buttons %>
-<div class="d-flex">
-  <a href="#" class="btn btn-dark me-2">Main Button</a>
-  <a href="#" class="btn btn-outline-dark">Secondary Button</a>
-</div>
-
-<div class="horizontal-spacer"></div>
-
-<%# Sport Cards %>
-<div class="row g-3">
-
-  <%# Football %>
-  <div class="col-6 col-md-4 col-lg-3">
-    <%= render partial: "shared/sport_card", locals: {
-      sport: "Football",
-      url: "https://plus.unsplash.com/premium_photo-1685303467758-31301bf357c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
+  <%# Buttons %>
+  <div class="d-flex">
+    <a href="#" class="btn btn-dark me-2">Main Button</a>
+    <a href="#" class="btn btn-outline-dark">Secondary Button</a>
   </div>
 
-  <%# Tennis %>
-  <div class="col-6 col-md-4 col-lg-3">
-    <%= render partial: "shared/sport_card", locals: {
-      sport: "Tennis",
-      url: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
-  </div>
+  <div class="horizontal-spacer"></div>
 
-  <%# Rugby %>
-  <div class="col-6 col-md-4 col-lg-3">
-    <%= render partial: "shared/sport_card", locals: {
-      sport: "Rugby",
-      url: "https://images.unsplash.com/photo-1480099225005-2513c8947aec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1903&q=80" } %>
-  </div>
+  <%# Sport Cards %>
+  <div class="row g-3">
 
-  <%# Cycling %>
-  <div class="col-6 col-md-4 col-lg-3">
-    <%= render partial: "shared/sport_card", locals: {
-      sport: "Cycling",
-      url: "https://plus.unsplash.com/premium_photo-1683842178579-2365ce4f5352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
-  </div>
-
-  <%# Basketball %>
-  <div class="col-6 col-md-4 col-lg-3">
-    <%= render partial: "shared/sport_card", locals: {
-      sport: "Basketball",
-      url: "https://plus.unsplash.com/premium_photo-1685366454759-563764d06fc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
-  </div>
-
-  <%# Volleyball %>
-  <div class="col-6 col-md-4 col-lg-3">
-    <%= render partial: "shared/sport_card", locals: {
-      sport: "Volleyball",
-      url: "https://images.unsplash.com/photo-1634501087922-c01c76ed66d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" } %>
-  </div>
-</div>
-
-<div class="horizontal-spacer"></div>
-
-<%# Event Cards %>
-<div class="row g-3 d-flex">
-
-    <% 4.times do %>
-    <div class="col-md-6 col-lg-4">
-
-      <div class="card-event d-flex ">
-
-        <%# Content %>
-        <div class="card-event-details w-75 p-4 d-flex flex-column justify-content-center">
-          <h5 class="card-event-title mb-3">
-            Football
-          </h5>
-          <div class="card-event-date mb-2">
-            📆&nbsp;&nbsp;Wed, 21 Jun, 17:00
-          </div>
-          <div class="card-event-location mb-2">
-            📍&nbsp;&nbsp;ASVZ Zürich
-          </div>
-          <div class="card-event-details">
-            💪&nbsp;&nbsp;Intermediate
-          </div>
-          <div class="card-event-participants mt-3">
-            <% rand(1..3).times do %>
-              <i class="fa-solid fa-circle-user fa-xl"></i>&nbsp;
-            <% end %>
-            <i class="fa-regular fa-circle-plus fa-xl"></i>
-          </div>
-        </div>
-
-        <%# Link %>
-        <div class="card-link w-25 d-flex justify-content-center align-items-center">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-      </div>
-
+    <%# Football %>
+    <div class="col-6 col-md-4 col-lg-3">
+      <%= render partial: "shared/sport_card", locals: {
+        sport: "Football",
+        url: "https://plus.unsplash.com/premium_photo-1685303467758-31301bf357c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
     </div>
-    <% end %>
-</div>
+
+    <%# Tennis %>
+    <div class="col-6 col-md-4 col-lg-3">
+      <%= render partial: "shared/sport_card", locals: {
+        sport: "Tennis",
+        url: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
+    </div>
+
+    <%# Rugby %>
+    <div class="col-6 col-md-4 col-lg-3">
+      <%= render partial: "shared/sport_card", locals: {
+        sport: "Rugby",
+        url: "https://images.unsplash.com/photo-1480099225005-2513c8947aec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1903&q=80" } %>
+    </div>
+
+    <%# Cycling %>
+    <div class="col-6 col-md-4 col-lg-3">
+      <%= render partial: "shared/sport_card", locals: {
+        sport: "Cycling",
+        url: "https://plus.unsplash.com/premium_photo-1683842178579-2365ce4f5352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
+    </div>
+
+    <%# Basketball %>
+    <div class="col-6 col-md-4 col-lg-3">
+      <%= render partial: "shared/sport_card", locals: {
+        sport: "Basketball",
+        url: "https://plus.unsplash.com/premium_photo-1685366454759-563764d06fc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
+    </div>
+
+    <%# Volleyball %>
+    <div class="col-6 col-md-4 col-lg-3">
+      <%= render partial: "shared/sport_card", locals: {
+        sport: "Volleyball",
+        url: "https://images.unsplash.com/photo-1634501087922-c01c76ed66d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" } %>
+    </div>
+  </div>
+
+  <div class="horizontal-spacer"></div>
+
+  <%# Event Cards %>
+  <div class="row g-3 d-flex">
+
+      <% 4.times do %>
+      <div class="col-md-6 col-lg-4">
+
+        <div class="card-event d-flex ">
+
+          <%# Content %>
+          <div class="card-event-details w-75 p-4 d-flex flex-column justify-content-center">
+            <h5 class="card-event-title mb-3">
+              Football
+            </h5>
+            <div class="card-event-date mb-2">
+              📆&nbsp;&nbsp;Wed, 21 Jun, 17:00
+            </div>
+            <div class="card-event-location mb-2">
+              📍&nbsp;&nbsp;ASVZ Zürich
+            </div>
+            <div class="card-event-details">
+              💪&nbsp;&nbsp;Intermediate
+            </div>
+            <div class="card-event-participants mt-3">
+              <% rand(1..3).times do %>
+                <i class="fa-solid fa-circle-user fa-xl"></i>&nbsp;
+              <% end %>
+              <i class="fa-regular fa-circle-plus fa-xl"></i>
+            </div>
+          </div>
+
+          <%# Link %>
+          <div class="card-link w-25 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+      </div>
+      <% end %>
+  </div>
+  </div>
 </div>
