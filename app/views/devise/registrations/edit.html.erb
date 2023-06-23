@@ -10,17 +10,14 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+   <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+    <%= f.input :first_name, required: true, input_html: { autocomplete: "given-name" } %>
+    <%= f.input :last_name, required: true, input_html: { autocomplete: "family-name" } %>
+    <%= f.input :birth_date, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, order: [:day, :month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, required: true, input_html: { autocomplete: "bday" } %>
+    <%= f.input :gender, collection: ['Male', 'Female', 'Other', 'Prefer not to say'], include_blank: true %>
+    <%= f.input :about, as: :text, input_html: { rows: 5 } %>
   </div>
 
   <div class="form-actions">

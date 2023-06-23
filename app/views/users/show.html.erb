@@ -1,0 +1,8 @@
+<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+<p>Age: <%= Time.now.year - @user.birth_date.year %></p>
+<p>About: <%= @user.about %></p>
+<% if @user.profile_picture.attached? %>
+  <%= image_tag @user.profile_picture %>
+<% else %>
+  <p>No profile picture available.</p>
+<% end %>
