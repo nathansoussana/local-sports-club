@@ -3,6 +3,7 @@ class ParticipantsController < ApplicationController
 
   def create
     @participant = Participant.new
+    authorize @participant
     @participant.event = @event
     @participant.user_id = current_user.id
     if @participant.save
