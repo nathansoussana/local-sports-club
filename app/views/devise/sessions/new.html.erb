@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 d-flex flex-column justify-content-center align-items-center w-100">
-        <div class="form-login" style="background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(<%=asset_path('login-form-background.jpg')%>);">
+        <div class="form-login">
           <h2>Log in</h2>
               <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
               <div class="form-inputs">
@@ -19,7 +19,7 @@
               </div>
 
               <div class="form-actions">
-                <%= f.button :submit, "Login", class:"btn btn-yellow"%>
+                <%= f.button :submit, "Next", class:"btn btn-yellow"%>
               </div>
           <% end %>
 
