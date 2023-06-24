@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   get '/pages/components', to: 'pages#components'
 
-  resources :events
+  resources :events do
+    resources :participants, only: [:create]
+  end
+  resources :particpants, only: [:destroy]
 end
