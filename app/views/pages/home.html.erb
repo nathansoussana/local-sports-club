@@ -1,6 +1,7 @@
-<div class="vh-100 d-flex flex-column full-height-homepage">
+<div class="d-flex flex-column full-height-homepage">
 <% content_for(:navbar_class, "navbar-home") %>
 
+<div class="py-auto">
   <div class="banner d-flex flex-column flex-grow-1" style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(<%=asset_path('home-background-tennis.jpg')%>);">
     <%# Main Text %>
     <div class="container my-5">
@@ -28,5 +29,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
