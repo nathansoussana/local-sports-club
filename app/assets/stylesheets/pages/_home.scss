@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+.icon-container {
+  i {
+    font-size: 32px;
+    color: #000000;
+  }
+
+  p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.navbar-home {
+  position: absolute;
+  width: 100%;
+}
