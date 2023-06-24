@@ -1,2 +1,24 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container-fluid container-show">
+<%# Event Section %>
+<h2><%= @event.sport.name  %></h2>
+<%= sanitize @event.sport.icon %>
+<h1> <%= @event.name %></h1>
+<p><%= @event.description%><p>
+<p><%= @event.address %></p>
+<p><%= @event.date %></p>
+<p> Max participants <%= @event.participant_number %></p>
+<p> Duration <%=@event.duration %>h</p>
+<p><%= @event.level %></p>
+<button class=btn type="submit"> Join/Leave </button>
+<p><%= @event.participant_number %> spots left</p>
+<%# Participants Section %>
+<p><strong>Participants</strong></p>
+<ul class="list-group">
+  <% @event.participants.each do |participant| %>
+    <li class="list-group-item"><%= participant.user.first_name%></li>
+  <% end %>
+</ul>
+<br>
+</div>
+<%# Map Section %>
+<%# Chat Section %>
