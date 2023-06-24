@@ -1,7 +1,8 @@
+<div class="banner d-flex flex-column vh-100" style="background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(<%=asset_path('signup-background.jpg')%>);">
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 d-flex flex-column justify-content-center align-items-center w-100">
-
+              <div class="form-login" style="background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(<%=asset_path('signup-form-background.jpg')%>);">
 <h2>Sign up</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
@@ -11,23 +12,26 @@
           <%= f.input :email,
                       required: true,
                       autofocus: true,
+                      placeholder: "Andre@LeWagon.com",
                       input_html: { autocomplete: "email" }%>
           <%= f.input :password,
                       required: true,
+                      placeholder: "......",
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
                       required: true,
+                      placeholder: "Confirm password",
                       input_html: { autocomplete: "new-password" } %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
+          <%= f.button :submit, "Sign up", class: "btn btn-yellow" %>
         </div>
       <% end %>
 
       <%= render "devise/shared/links" %>
-
+      </div>
     </div>
   </div>
 </div>
