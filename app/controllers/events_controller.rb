@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    @events = policy_scope(Event).all
+    @events = policy_scope(Event)
   end
 
   def show
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    authorize @event #please leave this line before the save line (if statement)
+    authorize @event
   end
 
   def edit
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     authorize @event
   end
 
-  #def event_params
-   # params.require(:event).permit(:name, :address, :rating, :level, :date. :participant_level, :duration, :description)
-  #end
+  def event_params
+   params.require(:event).permit(:name, :address, :rating, :level, :date, :participant_level, :duration, :description)
+  end
 end
