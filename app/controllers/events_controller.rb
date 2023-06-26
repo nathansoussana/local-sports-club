@@ -12,11 +12,19 @@ class EventsController < ApplicationController
   end
 
   def new
+    @event = Event.new
     authorize @event
   end
 
   def create
+    @event = Event.new(event_params)
+    @event.user = current_user
     authorize @event #please leave this line before the save line (if statement)
+    if @event.save # Will raise ActiveModel::ForbiddenAttributesError
+      redirect_to event_path(@event), notice: "Event was successfully added."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -25,10 +33,14 @@ class EventsController < ApplicationController
 
   def update
     authorize @event #please leave this line before the save line (if statement)
+    @event.update(event_params)
+    redirect_to event_path(@event)
   end
 
   def destroy
     authorize @event
+    @event.destroy
+    redirect_to root_path
   end
 
   private
@@ -38,7 +50,7 @@ class EventsController < ApplicationController
     authorize @event
   end
 
-  #def event_params
-   # params.require(:event).permit(:name, :address, :rating, :level, :date. :participant_level, :duration, :description)
-  #end
+  def event_params
+    params.require(:event).permit(:name, :address, :level, :date, :participant_number, :duration, :description, :sport_id)
+  end
 end
