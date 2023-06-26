@@ -26,13 +26,27 @@
 
     <% end %>
     <%# Participants Section %>
-        <p><strong>Participants</strong></p>
-          <ul class="list-group">
-            <% @event.participants.each do |participant| %>
-              <li class="list-group-item"><%= participant.user.first_name%></li>
-            <% end %>
-        </ul>
+    <p><strong>Participants</strong></p>
+    <ul class="list-group">
+      <% @event.participants.each do |participant| %>
+        <li class="list-group-item"><%= participant.user.first_name%></li>
+      <% end %>
+    </ul>
+
+
+    <%# Edit/destroy Event buttons Section %>
+    <div class="my-4">
+      <% if policy(@event).edit? %>
+        <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark me-2" %>
+      <% end %>
+      <% if policy(@event).destroy? %>
+        <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
+    </div>
     <%= link_to "Back", events_path, class: "btn btn-dark me-2" %>
+
+  </div>
+
   </div>
     <%# Map Section %>
 
