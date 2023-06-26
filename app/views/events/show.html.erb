@@ -25,6 +25,18 @@
         <li class="list-group-item"><%= participant.user.first_name%></li>
       <% end %>
     </ul>
+
+
+    <%# Edit/destroy Event buttons Section %>
+    <div class="my-4">
+      <% if policy(@event).edit? %>
+        <%= link_to "Edit", edit_event_path(@event), class: "btn btn-success" %>
+      <% end %>
+      <% if policy(@event).destroy? %>
+        <%= link_to "Delete", event_path(@event), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
+    </div>
+
   </div>
   </div>
     <%# Map Section %>

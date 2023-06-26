@@ -1,0 +1,13 @@
+<%= simple_form_for (@event) do |f| %>
+  <div class="form-inputs my-4">
+    <%= f.input :name %>
+    <%= f.input :description, label: 'Describe your event' %>
+    <%= f.input :date %>
+    <%= f.input :address %>
+    <%= f.input :level %>
+    <%= f.input :participant_number, label: 'Number of participants' %>
+    <%= f.input :duration %>
+    <%= f.submit class: "btn btn-success" %>
+    <%= link_to "Back", root_path, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>
