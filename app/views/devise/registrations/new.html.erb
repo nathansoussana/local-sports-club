@@ -4,32 +4,24 @@
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 d-flex flex-column justify-content-center align-items-center w-100">
               <div class="form-login">
 <h2>Sign up</h2>
-
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-        <%= f.error_notification %>
-
-        <div class="form-inputs">
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      placeholder: "Andre@LeWagon.com",
-                      input_html: { autocomplete: "email" }%>
-          <%= f.input :password,
-                      required: true,
-                      placeholder: "......",
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      placeholder: "Confirm password",
-                      input_html: { autocomplete: "new-password" } %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Next", class: "btn btn-yellow" %>
-        </div>
-      <% end %>
-
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }, html: { multipart: true }) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+    <%= f.input :first_name, required: true, input_html: { autocomplete: "given-name" } %>
+    <%= f.input :last_name, required: true, input_html: { autocomplete: "family-name" } %>
+    <%= f.input :birth_date, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, order: [:day, :month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, required: true, input_html: { autocomplete: "bday" } %>
+    <%= f.input :gender, collection: ['Male', 'Female', 'Other', 'Prefer not to say'], include_blank: true %>
+    <%= f.input :about, as: :text, input_html: { rows: 5 } %>
+    <%= f.input :location, required: true, input_html: { autocomplete: "address" } %>
+    <%= f.input :profile_picture, as: :file, label: "Profile Picture", input_html: { accept: "image/*" } %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
       <%= render "devise/shared/links" %>
       </div>
     </div>
