@@ -1,5 +1,5 @@
 <%= simple_form_for (@event) do |f| %>
-  <div class="col-md-6 offset-md-3">
+  <div class="col-md-6 offset-md-3 px-3">
     <%= f.input :name, label: 'Name of the event' %>
     <%= f.association :sport, prompt: "Select a sport" %>
     <%= f.input :level, collection: [[ "Beginner", "beginner" ], [ "Intermediate", "intermediate" ], [ "Advanced", "advanced" ], [ "Open for all", "for all" ]], prompt: "Select an option" %>
