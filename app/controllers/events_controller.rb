@@ -39,6 +39,8 @@ class EventsController < ApplicationController
 
   def destroy
     authorize @event
+    @event.destroy
+    redirect_to root_path
   end
 
   private
@@ -49,6 +51,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :address, :level, :date, :participant_number, :duration, :description)
+    params.require(:event).permit(:name, :address, :level, :date, :participant_number, :duration, :description, :sport_id)
   end
 end
