@@ -1,13 +1,13 @@
 <div class="banner d-flex flex-column vh-100" style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(<%=asset_path('show-background-football.jpg')%>);">
 
   <%# Event Section %>
-  <div class="container my-5">
-    <div class="horizontal-spacer"></div>
+  <div class="container">
     <%# Sport information%>
-      <h2><%= @event.sport.name  %></h2>
-      <%= sanitize @event.sport.icon %>
+    <div class="card-show d-flex flex-row">
+      <h2><%= @event.sport.name %> <%= sanitize @event.sport.icon %></h2>
+    </div>
     <%# Event information%>
-    <div class="col-md-7 my-3 align-self-center event-details">
+
     <h1> <%= @event.name %></h1>
     <p><%= @event.description%><p>
     <p><%= @event.address %></p>
@@ -15,9 +15,16 @@
     <p> Max participants <%= @event.participant_number %></p>
     <p> Duration <%=@event.duration %>h</p>
     <p><%= @event.level %></p>
-    <%= button_to 'Join/Leave', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
     <p><%= @event.participant_number %> spots left</p>
 
+  <div class="my-4">
+    <% if policy(@event).edit? %>
+    <%= button_to "Edit this event", edit_event_path(@event), class:"btn btn-dark me-2"  %>
+      <% else %>
+    <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
+    <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
+
+    <% end %>
     <%# Participants Section %>
     <p><strong>Participants</strong></p>
     <ul class="list-group">
@@ -36,8 +43,10 @@
         <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       <% end %>
     </div>
+    <%= link_to "Back", events_path, class: "btn btn-dark me-2" %>
 
   </div>
+
   </div>
     <%# Map Section %>
 
