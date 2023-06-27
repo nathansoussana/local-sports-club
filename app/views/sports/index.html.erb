@@ -8,7 +8,7 @@
             <%= link_to sport_path(sport), style: "text-decoration: none;" do %>
               <%= render partial: "shared/sport_card", locals: {
                   sport: sport.name,
-                  url: sport.image } %>
+                  url: sport.icon } %>
             <% end %>
         </div>
       <% end %>

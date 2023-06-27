@@ -4,5 +4,5 @@ class Sport < ApplicationRecord
   has_many :events
 
   validates :name, presence: true
-  validates :image, presence: true
+  validates :icon, presence: true
 end
