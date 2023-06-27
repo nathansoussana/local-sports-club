@@ -1,0 +1,8 @@
+<%= simple_form_for (@sport) do |f| %>
+  <div class="col-12 col-md-6 col-lg-4">
+    <%= f.input :name, label: 'Name of the sport' %>
+    <%= f.input :image, label: 'Image URL' %>
+    <%= f.submit class: "btn btn-dark me-2" %>
+    <%= link_to "Back", sports_path, class: "btn btn-outline-dark" %>
+  </div>
+<% end %>
