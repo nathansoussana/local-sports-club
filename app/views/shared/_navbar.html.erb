@@ -17,18 +17,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item pe-2">
             <%= link_to "Browse", events_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item pe-2">
             <%= link_to "New Event", new_event_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Components", pages_components_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sports", sports_path, class: "nav-link" %>
-          </li>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "Components", pages_components_path, class: "nav-link" %>
+          <%# </li> %>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "Sports", sports_path, class: "nav-link" %>
+          <%# </li> %>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
