@@ -1,8 +1,8 @@
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+<%= simple_form_for :search, url: search_events_path, method: :get, remote: true do |f| %>
   <div class="search-form-control form-group d-flex">
-    <input class="form-control string required me-2" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-dark">
-      Search
-    </button>
+    <%= f.input_field :city, class: "form-control string required me-2", placeholder: "City" %>
+    <%= f.input_field :sport, class: "form-control string required me-2", placeholder: "Sport" %>
+    <%= f.input_field :level, class: "form-control string required me-2", placeholder: "Level" %>
+    <%= f.button :submit, "Search", class: "btn btn-dark" %>
   </div>
 <% end %>

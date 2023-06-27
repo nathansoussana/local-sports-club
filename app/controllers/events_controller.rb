@@ -5,6 +5,13 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
   end
 
+  def search
+    @events = policy_scope(Event).search(params[:search])
+    respond_to do |format|
+      format.js { render partial: 'search_results', locals: { events: @events } }
+    end
+  end
+
   def show
     @event = Event.find(params[:id])
     @participant = Participant.new

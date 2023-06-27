@@ -1,0 +1,31 @@
+<% @events.each do |event| %>
+  <div class="col-md-6 col-lg-4">
+    <div class="card-event d-flex">
+      <%# Content %>
+      <div class="card-event-details w-75 p-4 d-flex flex-column justify-content-center">
+        <h5 class="card-event-title mb-3">
+          <%= event.name %>
+        </h5>
+        <div class="card-event-date d-flex align-items-center mb-2">
+          <div class="me-2">📆</div>
+          <div><%= event.date %></div>
+        </div>
+        <div class="card-event-location d-flex align-items-center mb-2">
+          <div class="me-2">📍</div>
+          <div><%= event.address %></div>
+        </div>
+        <div class="card-event-details align-items-center d-flex">
+          <div class="me-2">💪</div>
+          <div><%= event.level %></div>
+        </div>
+      </div>
+
+      <%# Link %>
+      <div class="card-link w-25 d-flex justify-content-center align-items-center">
+        <%= link_to event do %>
+          <i class="fa-solid fa-chevron-right" style="color: #000000;"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
