@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :events do
     resources :participants, only: [:create, :destroy]
   end
+
+  resources :sports
 end

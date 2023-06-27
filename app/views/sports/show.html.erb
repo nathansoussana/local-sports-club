@@ -1,0 +1,8 @@
+<div class="container-xxl">
+  <div class="my-4">
+    <h1><%= @sport.name %></h1>
+  </div>
+  <%= link_to "Edit", edit_sport_path(@sport), class: "btn btn-dark" %>
+  <%= link_to "Delete", sport_path(@sport), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%= link_to "Back", sports_path, class: "btn btn-outline-dark" %>
+</div>
