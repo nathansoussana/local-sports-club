@@ -2,6 +2,8 @@
 
   <%# Event Section %>
   <div class="container">
+  <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex items-center justify-between mb-4">
     <%# Sport information%>
     <div class="card-show d-flex flex-row">
       <h2><%= @event.sport.name %> <%= sanitize @event.sport.icon %></h2>
@@ -10,43 +12,40 @@
 
     <h1> <%= @event.name %></h1>
     <p><%= @event.description%><p>
-    <p><%= @event.address %></p>
-    <p><%= @event.date %></p>
+    <div class="d-flex">
+      <p style="font-weight: bold;", class="paragraph-spacing">Where</p>
+      <p class="paragraph-spacing"><%= @event.address %></p>
+      <p style="font-weight: bold;">When</p>
+      <p class="paragraph-spacing"><%= @event.date %></p>
+    </div>
+
     <p> Max participants <%= @event.participant_number %></p>
     <p> Duration <%=@event.duration %>h</p>
     <p><%= @event.level %></p>
-    <p><%= @event.participant_number %> spots left</p>
-
   <div class="my-4">
-    <% if policy(@event).edit? %>
-    <%= button_to "Edit this event", edit_event_path(@event), class:"btn btn-dark me-2"  %>
-      <% else %>
-    <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
-    <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
-
-    <% end %>
-    <%# Participants Section %>
-    <p><strong>Participants</strong></p>
-    <ul class="list-group">
-      <% @event.participants.each do |participant| %>
-        <li class="list-group-item"><%= participant.user.first_name%></li>
-      <% end %>
-    </ul>
-
-
-    <%# Edit/destroy Event buttons Section %>
-    <div class="my-4">
       <% if policy(@event).edit? %>
         <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark me-2" %>
       <% end %>
       <% if policy(@event).destroy? %>
         <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      <% end %>
-    </div>
-    <%= link_to "Back", events_path, class: "btn btn-dark me-2" %>
-
+      <% else %>
+      <div class= "d-flex align-items-center">
+      <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
+      <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" %>
+       <% end %>
+      <p class="participant-spacing"><%= @event.participant_number %> spots left!</p>
+      </div>
   </div>
 
+    <%# Participants Section %>
+    <p style="font-weight: bold;">Participants</p>
+    <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+      <% @event.participants.each do |participant| %>
+        <li class="pb-3 sm:pb-4"><%= participant.user.first_name%></li>
+      <% end %>
+    </ul>
+    </div>
+    </div>
   </div>
     <%# Map Section %>
 
