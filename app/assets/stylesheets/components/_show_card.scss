@@ -1,5 +1,10 @@
+.card-show {
+  padding: 2px;
+}
+
 .paragraph-spacing {
-  margin-right: 10px; /* Adjust the margin value as desired */
+  margin-right: 10px;
+  padding: 2px; /* Adjust the margin value as desired */
 }
 
 .div-block {
@@ -7,10 +12,6 @@
 }
 
 .participant-spacing {
-  padding-top: 10px;
+  margin-bottom: 40px;
   padding-left: 10px;
-}
-
-p.thick {
-  font-weight: bold;
 }

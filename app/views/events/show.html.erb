@@ -4,36 +4,50 @@
   <div class="container">
   <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">
-    <%# Sport information%>
-    <div class="card-show d-flex flex-row">
-      <h2><%= @event.sport.name %> <%= sanitize @event.sport.icon %></h2>
-    </div>
-    <%# Event information%>
 
-    <h1> <%= @event.name %></h1>
+    <%# Sport information%>
+    <div class="d-flex flex-column">
+      <h2><%= @event.sport.name %> <%= sanitize @event.sport.icon %></h2>
+       <h1> <%= @event.name %></h1>
+    </div>
+
+    <%# Event information%>
     <p><%= @event.description%><p>
+
     <div class="d-flex">
+    <div class="card-show d-flex flex-column">
       <p style="font-weight: bold;", class="paragraph-spacing">Where</p>
       <p class="paragraph-spacing"><%= @event.address %></p>
+      </div>
+    <div class="d-flex flex-column">
       <p style="font-weight: bold;">When</p>
       <p class="paragraph-spacing"><%= @event.date %></p>
     </div>
+  </div>
 
-    <p> Max participants <%= @event.participant_number %></p>
+    <p> Max participants </p>
+    <%= @event.participant_number %>
     <p> Duration <%=@event.duration %>h</p>
     <p><%= @event.level %></p>
-  <div class="my-4">
+
+
+  <div class="d-flex flex-row">
       <% if policy(@event).edit? %>
         <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark me-2" %>
       <% end %>
       <% if policy(@event).destroy? %>
         <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       <% else %>
-      <div class= "d-flex align-items-center">
+      <div class= "d-flex flex-row" >
+        <%if %>
+          <%@event.participant_number-1 > @event.participants.count %>
       <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
+          <% else %>
+          <p> The event is full! </p>
+        <%end %>
       <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" %>
+      <p class="participant-spacing"><%= @event.participant_number - @event.participants.count-1  %> spots left!</p>
        <% end %>
-      <p class="participant-spacing"><%= @event.participant_number %> spots left!</p>
       </div>
   </div>
 
