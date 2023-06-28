@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :participants, only: [:create, :destroy]
+    resource :chatroom, only: :show
   end
 
   resources :sports
