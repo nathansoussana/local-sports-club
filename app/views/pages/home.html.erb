@@ -7,9 +7,15 @@
     <div class="container my-5">
       <h1 style="font-size: 36px">The Local Sports Club</h1>
       <h2 class="mt-0">Uniting Sports Lovers Around the World</h2>
-      <p style="font-size: 18px">Join our community, make new friends, play your favourite sports.</p>
-      <%= link_to "Log in", new_user_session_path, class: "btn btn-dark btn-lg"%>
-      <a class="btn btn-yellow btn-lg" href="#">Sign up</a>
+      <% if user_signed_in? %>
+        <p style="font-size: 18px">Start browsing for events around you, or create your own.</p>
+        <%= link_to "Create Event", new_event_path, class: "btn btn-dark btn-lg" %>
+        <%= link_to "Browse Events", events_path, class: "btn btn-yellow btn-lg" %>
+      <% else %>
+        <p style="font-size: 18px">Join our community, make new friends, play your favourite sports.</p>
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-dark btn-lg"%>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-yellow btn-lg" %>
+      <% end %>
     </div>
 
     <%# Icons %>

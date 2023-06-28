@@ -1,7 +1,7 @@
-<div class="container-xxl">
+<div class="container-xxl py-4">
   
   <%# Text %>
-  <div class="my-4">
+  <div class="mb-4">
 
   <h1>Components</h1>
   <div class="horizontal-spacer"></div>
@@ -18,6 +18,7 @@
   <%# Buttons %>
   <div class="d-flex">
     <a href="#" class="btn btn-dark me-2">Main Button</a>
+    <a href="#" class="btn btn-yellow me-2">Main Button</a>
     <a href="#" class="btn btn-outline-dark">Secondary Button</a>
   </div>
 
@@ -26,47 +27,13 @@
   <%# Sport Cards %>
   <div class="row g-3">
 
-    <%# Football %>
-    <div class="col-6 col-md-4 col-lg-3">
-      <%= render partial: "shared/sport_card", locals: {
-        sport: "Football",
-        url: "https://plus.unsplash.com/premium_photo-1685303467758-31301bf357c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
-    </div>
-
-    <%# Tennis %>
+    <% 4.times do %>
     <div class="col-6 col-md-4 col-lg-3">
       <%= render partial: "shared/sport_card", locals: {
         sport: "Tennis",
         url: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
     </div>
-
-    <%# Rugby %>
-    <div class="col-6 col-md-4 col-lg-3">
-      <%= render partial: "shared/sport_card", locals: {
-        sport: "Rugby",
-        url: "https://images.unsplash.com/photo-1480099225005-2513c8947aec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1903&q=80" } %>
-    </div>
-
-    <%# Cycling %>
-    <div class="col-6 col-md-4 col-lg-3">
-      <%= render partial: "shared/sport_card", locals: {
-        sport: "Cycling",
-        url: "https://plus.unsplash.com/premium_photo-1683842178579-2365ce4f5352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
-    </div>
-
-    <%# Basketball %>
-    <div class="col-6 col-md-4 col-lg-3">
-      <%= render partial: "shared/sport_card", locals: {
-        sport: "Basketball",
-        url: "https://plus.unsplash.com/premium_photo-1685366454759-563764d06fc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" } %>
-    </div>
-
-    <%# Volleyball %>
-    <div class="col-6 col-md-4 col-lg-3">
-      <%= render partial: "shared/sport_card", locals: {
-        sport: "Volleyball",
-        url: "https://images.unsplash.com/photo-1634501087922-c01c76ed66d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" } %>
-    </div>
+    <% end %>
   </div>
 
   <div class="horizontal-spacer"></div>
@@ -74,33 +41,36 @@
   <%# Event Cards %>
   <div class="row g-3 d-flex">
 
-      <% 4.times do %>
+      <% 3.times do %>
       <div class="col-md-6 col-lg-4">
 
         <div class="card-event d-flex ">
 
           <%# Content %>
-          <div class="card-event-details w-75 p-4 d-flex flex-column justify-content-center">
+          <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
+            <h6 class="card-event-title">
+              Tennis
+            </h6>
             <h5 class="card-event-title mb-3">
-              Football
+              Friendly Game
             </h5>
             <div class="card-event-date d-flex align-items-center mb-2">
               <div class="me-2">📆</div>
-              <div>Wed, 21 Jun, 17:00</div>
+              <div>Wednesday, 21 June, 17:00</div>
             </div>
             <div class="card-event-location d-flex align-items-center mb-2">
               <div class="me-2">📍</div>
-              <div>ASVZ Zürich</div>
+              <div>TC Paris, Paris, France</div>
             </div>
             <div class="card-event-details align-items-center d-flex">
               <div class="me-2">💪</div>
-              <div>Intermediate</div>
+              <div>Advanced</div>
             </div>
           </div>
 
           <%# Link %>
           <div class="card-link w-25 d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-chevron-right"></i>
+            <i class="fa-solid fa-chevron-right p-4"></i>
           </div>
         </div>
 
