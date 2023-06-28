@@ -1,3 +1,16 @@
+.btn-dark {
+  &:hover {
+    background-color: transparent;
+    color: #000;
+  }
+}
+
 .btn-yellow {
   background-color: #F3FFB6;
+  border: 1px solid #F3FFB6;
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid #000;
+  }
 }
