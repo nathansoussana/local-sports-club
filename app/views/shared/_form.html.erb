@@ -1,5 +1,6 @@
+<div class="container-xxl">
 <%= simple_form_for (@event) do |f| %>
-  <div class="col-md-6 offset-md-3 px-3">
+  <div class="col-xl-6 offset-xl-3">
     <%= f.input :name, label: 'Name of the event' %>
     <%= f.association :sport, prompt: "Select a sport" %>
     <%= f.input :level, collection: [[ "Beginner", "Beginner" ], [ "Intermediate", "Intermediate" ], [ "Advanced", "Advanced" ], [ "Open for all", "Open for all" ]], prompt: "Select an option" %>
@@ -12,3 +13,4 @@
     <%= link_to "Back", root_path, class: "btn btn-outline-dark" %>
   </div>
 <% end %>
+</div>
