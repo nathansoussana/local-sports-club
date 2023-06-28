@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   resources :events do
     resources :participants, only: [:create, :destroy]
   end
-  get '/search', to: 'events#search', as: 'search_events'
 end
