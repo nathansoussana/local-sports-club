@@ -1,4 +1,4 @@
-<div style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1876&q=80); background-position: center center;">
+<div style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1876&q=80); background-position: center center; background-size: cover;">
   <div class="container-xxl background-container d-flex flex-column">
     <div class="my-auto">
       <h1>Events around you</h1>
@@ -20,7 +20,10 @@
         <div class="card-event d-flex ">
 
           <%# Content %>
-          <div class="card-event-details w-75 p-4 d-flex flex-column justify-content-center">
+          <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
+            <h6 class="card-event-title">
+              <%= event.sport.name %>
+            </h6>
             <h5 class="card-event-title mb-3">
               <%= event.name %>
             </h5>

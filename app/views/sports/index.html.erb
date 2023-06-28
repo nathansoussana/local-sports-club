@@ -1,0 +1,18 @@
+<div class="container-xxl">
+  <div class="my-4">
+    <h1 class="mb-4">Sports</h1>
+
+    <div class="row g-3">
+      <% @sports.each do |sport| %>
+        <div class="col-6 col-md-4 col-lg-3">
+            <%= link_to sport_path(sport), style: "text-decoration: none;" do %>
+              <%= render partial: "shared/sport_card", locals: {
+                  sport: sport.name,
+                  url: sport.icon } %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "Add Sport", new_sport_path, class: 'btn btn-dark' %>

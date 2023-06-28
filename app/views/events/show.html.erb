@@ -1,32 +1,54 @@
-<div class="banner d-flex flex-column vh-100" style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(<%=asset_path('show-background-football.jpg')%>);">
+<div style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(<%= @sport.icon %>); background-position: center center; background-size: cover;">
 
   <%# Event Section %>
-  <div class="container">
+  <div class="container-xxl background-container-show d-flex flex-column">
+    <div class="my-auto">
     <%# Sport information%>
-    <div class="card-show d-flex flex-row">
-      <h2><%= @event.sport.name %> <%= sanitize @event.sport.icon %></h2>
-    </div>
+      <div class="card-show d-flex flex-row">
+        <h2><%= @event.sport.name %></h2>
+      </div>
     <%# Event information%>
+      <h1> <%= @event.name %></h1>
+      <p><%= @event.description%><p>
+    </div>
+  </div>
+</div>
 
-    <h1> <%= @event.name %></h1>
-    <p><%= @event.description%><p>
-    <p><%= @event.address %></p>
-    <p><%= @event.date %></p>
-    <p> Max participants <%= @event.participant_number %></p>
-    <p> Duration <%=@event.duration %>h</p>
-    <p><%= @event.level %></p>
-    <p><%= @event.participant_number %> spots left</p>
+<div class="container-xxl my-4">
+    <div>
+      <h6>Address</h6>
+      <p><%= @event.address %></p>
+    </div>
+    <div>
+      <h6>Date</h6>
+      <p><%= @event.date %></p>
+    </div>
+    <div>
+      <h6>Max participants</h6>
+      <p><%= @event.participant_number %></p>
+    </div>
+    <div>
+      <h6>Duration</h6>
+      <p><%= @event.duration %>h</p>
+    </div>
+    <div>
+      <h6>Level</h6>
+      <p><%= @event.level %></p>
+    </div>
 
   <div class="my-4">
     <% if policy(@event).edit? %>
-    <%= button_to "Edit this event", edit_event_path(@event), class:"btn btn-dark me-2"  %>
-      <% else %>
-    <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
-    <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
-
+      <%= button_to "Edit this event", edit_event_path(@event), class:"btn btn-dark"  %>
+    <% else %>
+      <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark" %>
+      <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark" %>
     <% end %>
+    <p><%= @event.participant_number %> spots left</p>
+
+    <div class="horizontal-spacer"></div>
+
     <%# Participants Section %>
-    <p><strong>Participants</strong></p>
+    <h6>Participants</h6>
     <ul class="list-group">
       <% @event.participants.each do |participant| %>
         <li class="list-group-item"><%= participant.user.first_name%></li>
@@ -37,13 +59,13 @@
     <%# Edit/destroy Event buttons Section %>
     <div class="my-4">
       <% if policy(@event).edit? %>
-        <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark me-2" %>
+        <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark" %>
       <% end %>
       <% if policy(@event).destroy? %>
         <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       <% end %>
+      <%= link_to "Back", events_path, class: "btn btn-outline-dark" %>
     </div>
-    <%= link_to "Back", events_path, class: "btn btn-dark me-2" %>
 
   </div>
 

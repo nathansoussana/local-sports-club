@@ -1,0 +1,10 @@
+<div class="banner d-flex flex-column vh-100" style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(<%= @sport.icon %>); background-size: cover;">
+  <div class="container-xxl vh-100 d-flex flex-column">
+    <div class="my-4">
+      <h1><%= @sport.name %></h1>
+      <%= link_to "Edit", edit_sport_path(@sport), class: "btn btn-dark" %>
+      <%= link_to "Delete", sport_path(@sport), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <%= link_to "Back", sports_path, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+</div>
