@@ -4,17 +4,18 @@
 }
 
 .search-form-control .form-control {
+  width: 100%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
   background-color: $white;
 
-  @include media-breakpoint-up(sm) {
-    width: 400px;
-  }
+  
 }
 
 .search_query {
   margin-bottom: 0 !important;
+  width: 100%;
+  margin-right: 8px;
 }
 
 .search_query .form-label {
@@ -25,4 +26,12 @@
   border: 1px solid $black;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.simple_form.search {
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    width: 500px;
+  }
 }
