@@ -1,6 +1,10 @@
 class SportsController < ApplicationController
   before_action :set_sport, only: %i[show edit update destroy]
 
+  def index
+    @sports = Sport.all
+  end
+
   def show
   end
 
