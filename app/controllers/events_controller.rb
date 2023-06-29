@@ -6,9 +6,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @participant = Participant.new
     @sport = @event.sport
+    @chatroom = @event.chatroom
+    @messages = @chatroom.messages
+    @message = Message.new
     authorize @event
   end
 

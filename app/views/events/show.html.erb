@@ -73,4 +73,14 @@
     <%# Map Section %>
 
     <%# Chat Section %>
+  <div class="container-xxl my-4">
+    <div class="card-show d-flex flex-row">
+      <h2><%= @event.name %> chat</h2>
+    </div>
+  </div>
+
+  <div class="my-4">
+    <%= render "shared/chatroom", messages: @messages, chatroom: @chatroom, message: @message %>
+  </div>
+
 </div>

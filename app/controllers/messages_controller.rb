@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   def create
     # content, chatroom, user
-    puts params
     @event = Event.find(params[:event_id])
     @message = Message.new(message_params)
     @chatroom = @event.chatroom
@@ -10,9 +9,9 @@ class MessagesController < ApplicationController
     authorize @message
 
     if @message.save
-      redirect_to event_chatroom_path(@event)
+      redirect_to event_path(@event, anchor: "wall")
     else
-      render "chatrooms/show", status: :unprocessable_entity
+      render "events/show", status: :unprocessable_entity
     end
 
   end
