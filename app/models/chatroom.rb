@@ -1,4 +1,4 @@
 class Chatroom < ApplicationRecord
   belongs_to :event
-  has_many :massages, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end
