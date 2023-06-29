@@ -52,7 +52,7 @@
           <%@event.participant_number-1 > @event.participants.count %>
       <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
           <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" %>
-          <p class= "mb-0 ms-2"><%= @event.participant_number - @event.participants.count-1  %> spots left!</p>
+          <%= pluralize(@event.participant_number - @event.participants.count - 1, 'spot') %> left!
           <% else %>
           <p class= "mb-0 me-2" > The event is full! </p>
           <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" %>
