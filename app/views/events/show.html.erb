@@ -52,7 +52,7 @@
           <%@event.participant_number-1 > @event.participants.count %>
           <%= button_to 'Join', event_participants_path(@event), method: :post, class:"btn btn-dark me-2" unless @participant = Participant.find_by(event: @event, user: current_user) %>
           <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" if @participant = Participant.find_by(event: @event, user: current_user) %>
-          <p><%= pluralize(@event.participant_number - @event.participants.count - 1, 'spot') %> left!</p>
+          <%= pluralize(@event.participant_number - @event.participants.count - 1, 'spot') %> left!
           <% else %>
           <p class= "mb-0 me-2" > The event is full! </p>
           <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" if @participant = Participant.find_by(event: @event, user: current_user) %>
