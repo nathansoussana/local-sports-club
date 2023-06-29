@@ -37,24 +37,7 @@
     </div>
 
   <div>
-    <% if policy(@event).edit? %>
-      <%= button_to "Edit this event", edit_event_path(@event), class:"btn btn-dark"  %>
-    <% else %>
-      <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark" %>
-      <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark" %>
-    <% end %>
-    <p><%= @event.participant_number %> spots left</p>
-
     <div class="horizontal-spacer"></div>
-
-    <%# Participants Section %>
-    <h6>Participants</h6>
-    <ul class="list-group">
-      <% @event.participants.each do |participant| %>
-        <li class="list-group-item"><%= participant.user.first_name%></li>
-      <% end %>
-    </ul>
-
 
     <%# Edit/destroy Event buttons Section %>
     <div>
@@ -63,10 +46,41 @@
       <% end %>
       <% if policy(@event).destroy? %>
         <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% else %>
+      <div class= "d-flex flex-row align-items-center" >
+        <%if %>
+          <%@event.participant_number-1 > @event.participants.count %>
+      <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark me-2" %>
+          <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" %>
+          <%= pluralize(@event.participant_number - @event.participants.count - 1, 'spot') %> left!
+          <% else %>
+          <p class= "mb-0 me-2" > The event is full! </p>
+          <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-outline-dark" %>
+        <%end %>
       <% end %>
-      <%= link_to "Back", events_path, class: "btn btn-outline-dark" %>
-    </div>
+       </div>
 
+       <div class="horizontal-spacer"></div>
+
+    <%# Participants Section %>
+    <h6>Participants</h6>
+    <ul class="list-group">
+      <% if policy(@event).edit? %>
+        <li class="list-group-item"><%= "You (Host)" %></li>
+          <% else %>
+        <li class="list-group-item"><%= @event.user.first_name%></li>
+          <%end %>
+      <% @event.participants.each do |participant| %>
+        <li class="list-group-item"><%= "#{participant.user.first_name} #{participant.user.last_name}"%></li>
+      <% end %>
+    </ul>
+
+      <div class="horizontal-spacer"></div>
+
+      <%= link_to "Back", events_path, class: "btn btn-outline-dark" %>
+
+
+  </div>
   </div>
 
   </div>
