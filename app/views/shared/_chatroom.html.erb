@@ -1,10 +1,9 @@
-<div class="container chatroom scrollable border">
-  <div class="messages">
+<div class="container-xxl chatroom scrollable border">
+  <div class="messages px-2 pt-3">
     <% messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
-          <strong><%= message.user.email %></strong>
-          <i><%= message.created_at.strftime("%A %b %e at %R") %></i>
+          <strong><%= message.user.email %></strong> | <%= message.created_at.strftime("%A %b %e at %R") %>
         </small>
         <p><%= message.content %></p>
       </div>
@@ -16,9 +15,9 @@
   <%= f.input :content,
     input_html: { class: '' },
     label: false,
-    placeholder: "Type your message for #{chatroom.event.name}",
+    placeholder: "Type your message",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-dark mb-3" %>
+  <%= f.submit "Send", class: "btn btn-dark mb-3 ms-2" %>
 <% end %>
 </div>

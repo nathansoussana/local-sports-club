@@ -116,14 +116,14 @@
   </div>
 
   </div>
-    <%# Map Section %>
+    
+    <div class="py-3"></div>
 
     <%# Chat Section %>
   <div class="container-xxl my-4">
     <div class="card-show d-flex flex-row">
-      <h2><%= @event.name %> chat</h2>
+      <h5 class="pt-2 pb-4">Chat</h5>
     </div>
-    <div class="horizontal-spacer"></div>
     <%= render "shared/chatroom", messages: @messages, chatroom: @chatroom, message: @message %>
   </div>
 
