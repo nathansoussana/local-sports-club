@@ -88,16 +88,16 @@
           <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark me-1" %>
         <% end %>
         <% if policy(@event).destroy? %>
-          <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark me-1", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to "Delete Event", event_path(@event), class: "btn btn-dark me-1", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           <%= link_to "Back", events_path, class: "btn btn-outline-dark  me-1" %>
         <% else %>
           <div class="d-flex flex-row align-items-center">
             <% if @event.participant_number - 1 > @event.participants.count %>
-              <%= button_to 'Join', event_participants_path(@event), method: :post, class: "btn btn-dark me-2" %>
-              <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-outline-dark me-2" if @participant = Participant.find_by(event: @event, user: current_user) %>
+              <%= button_to 'Join Event', event_participants_path(@event), method: :post, class: "btn btn-dark me-2" %>
+              <%= button_to 'Leave Event', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-dark me-2" if @participant = Participant.find_by(event: @event, user: current_user) %>
               <%= link_to "Back", events_path, class: "btn btn-outline-dark  me-2" %>
             <% else %>
-              <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-outline-dark me-2" %>
+              <%= button_to 'Leave Event', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-dark me-2" %>
               <%= link_to "Back", events_path, class: "btn btn-outline-dark me-2" %>
             <% end %>
           </div>
