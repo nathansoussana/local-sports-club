@@ -3,10 +3,25 @@
   max-height: 400px;
   overflow: scroll;
   border-radius: 5px;
-  border-color: antiquewhite;
+  border-color: #FDF8F2;
 }
 
 .border {
   border: 2px solid;
   border-radius: 5px;
+}
+
+.message-box {
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 100px;
+  height: auto;
+}
+
+.message-self {
+  background-color: #d7c1b2;
+}
+
+.message-else {
+  background-color: #d9d9d9;
 }
