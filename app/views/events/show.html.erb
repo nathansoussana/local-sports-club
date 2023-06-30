@@ -1,72 +1,118 @@
+<%# Banner %>
 <div style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(<%= @sport.icon %>); background-position: center center; background-size: cover;">
-
-  <%# Event Section %>
-  <div class="container-xxl background-container-show d-flex flex-column">
+  <div class="container-xxl background-container d-flex flex-column">
     <div class="my-auto">
-    <%# Sport information%>
       <div class="card-show d-flex flex-row">
         <h2><%= @event.sport.name %></h2>
       </div>
-    <%# Event information%>
-      <h1> <%= @event.name %></h1>
-      <p><%= @event.description%><p>
+      <h1><%= @event.name %></h1>
+      <p><%= @event.description %></p>
     </div>
   </div>
 </div>
 
-<div class="container-xxl my-4">
-    <div>
-      <h6>Address</h6>
-      <p><%= @event.address %></p>
-    </div>
-    <div>
-      <h6>Date</h6>
-      <p><%= @event.date %></p>
-    </div>
-    <div>
-      <h6>Max participants</h6>
-      <p><%= @event.participant_number %></p>
-    </div>
-    <div>
-      <h6>Duration</h6>
-      <p><%= @event.duration %>h</p>
-    </div>
-    <div>
-      <h6>Level</h6>
-      <p><%= @event.level %></p>
+<div class="py-1"></div>
+
+<%# Event Information %>
+<div class="container-xxl py-4 d-flex">
+  <div class="row">
+    <%# Event Details (Left side) %>
+    <div class="event-details col-12 col-lg-6">
+
+      <%# Event Headlines %>
+      <h5 class="pb-4">Event Details</h5>
+      <div class="d-flex">
+        <div class="row g-2">
+          <div class="col-6">
+            <h6>Address</h6>
+            <p><%= @event.address %></p>
+          </div>
+          <div class="col-6">
+            <h6>Date</h6>
+            <p><%= @event.date %></p>
+          </div>
+          <div class="col-6">
+            <h6>Max participants</h6>
+            <p><%= @event.participant_number %></p>
+          </div>
+          <div class="col-6">
+            <h6>Duration</h6>
+            <p><%= @event.duration %>h</p>
+          </div>
+          <div class="col-6">
+            <h6>Level</h6>
+            <p><%= @event.level %></p>
+          </div>
+          <div class="col-6">
+            <h6>Host</h6>
+            <p><%= @creator.email %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-3"></div>
+      <div class="separator"></div>
+      <div class="py-4"></div>
+
+      <%# Participants Section %>
+      <div>
+        <h5 class="pb-4">Participants (<%= @event.participants.size + 1 %>/<%= @event.participant_number %>)</h5>
+        <div class="d-flex">
+          <div class="row g-2 col-12">
+            <% if policy(@event).edit? %>
+              <div class="col-12 col-lg-6">
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <%= "You (Host)" %>
+              </div>
+            <% else %>
+              <div class="col-12 col-lg-6">
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar  me-2" %>
+                <%= @event.user.email %>
+              </div>
+            <% end %>
+            <% @event.participants.each do |participant| %>
+              <div class="col-12 col-lg-6">
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <%= "#{participant.user.email}" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4"></div>
+
+      <%# Edit/destroy Event buttons Section %>
+      <div>
+        <% if policy(@event).edit? %>
+          <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark me-1" %>
+        <% end %>
+        <% if policy(@event).destroy? %>
+          <%= link_to "Delete Event", event_path(@event), class: "btn btn-dark me-1", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to "Back", events_path, class: "btn btn-outline-dark  me-1" %>
+        <% else %>
+          <div class="d-flex flex-row align-items-center">
+            <% if @event.participant_number - 1 > @event.participants.count %>
+              <%= button_to 'Join Event', event_participants_path(@event), method: :post, class: "btn btn-dark me-2" unless @participant = Participant.find_by(event: @event, user: current_user) %>
+              <%= button_to 'Leave Event', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-dark me-2" if @participant = Participant.find_by(event: @event, user: current_user) %>
+              <%= link_to "Back", events_path, class: "btn btn-outline-dark  me-2" %>
+            <% else %>
+              <%= button_to 'Leave Event', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-dark me-2" if @participant = Participant.find_by(event: @event, user: current_user) %>
+              <%= link_to "Back", events_path, class: "btn btn-outline-dark me-2" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="py-3"></div>
     </div>
 
-  <div class="my-4">
-    <% if policy(@event).edit? %>
-      <%= button_to "Edit this event", edit_event_path(@event), class:"btn btn-dark"  %>
-    <% else %>
-      <%= button_to 'Join', event_participants_path(@event), method: :post, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark" %>
-      <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-dark" %>
-    <% end %>
-    <p><%= @event.participant_number %> spots left</p>
-
-    <div class="horizontal-spacer"></div>
-
-    <%# Participants Section %>
-    <h6>Participants</h6>
-    <ul class="list-group">
-      <% @event.participants.each do |participant| %>
-        <li class="list-group-item"><%= participant.user.first_name%></li>
-      <% end %>
-    </ul>
-
-
-    <%# Edit/destroy Event buttons Section %>
-    <div class="my-4">
-      <% if policy(@event).edit? %>
-        <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-dark" %>
-      <% end %>
-      <% if policy(@event).destroy? %>
-        <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-dark", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      <% end %>
-      <%= link_to "Back", events_path, class: "btn btn-outline-dark" %>
+    <%# Map (Right Side) %>
+    <div class="map-details col-12 col-lg-6">
+      <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*qYUvh-EtES8dtgKiBRiLsA.png" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+      </div>
     </div>
-
   </div>
 
   </div>

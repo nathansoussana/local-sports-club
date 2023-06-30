@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :sports
+
+  get '/events/search', to: 'events#search', as: 'event_search'
+
 end

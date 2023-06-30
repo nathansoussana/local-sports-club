@@ -5,3 +5,13 @@
   box-sizing: border-box;
   background-color: $white;
 }
+
+.fa-chevron-right {
+  position: relative;
+  right: 0;
+  transition: right ease 0.25s;
+
+  &:hover {
+    right: -5px;
+  }
+}

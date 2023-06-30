@@ -12,16 +12,16 @@
           <%= f.input :email,
                       required: true,
                       autofocus: true,
-                      placeholder: "Andre@LeWagon.com",
+                      placeholder: "",
                       input_html: { autocomplete: "email" }%>
           <%= f.input :password,
                       required: true,
-                      placeholder: "......",
+                      placeholder: "",
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
                       required: true,
-                      placeholder: "Confirm password",
+                      placeholder: "",
                       input_html: { autocomplete: "new-password" } %>
         </div>
 
