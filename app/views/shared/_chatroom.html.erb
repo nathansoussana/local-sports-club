@@ -3,7 +3,7 @@
     <% messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
-          <strong><%= message.user.email %></strong> | <%= message.created_at.strftime("%A %b %e at %R") %>
+          <%= message.user.email %> &nbsp;&#183;&nbsp; <%= message.created_at.strftime("%A %b %e at %R") %>
         </small>
         <p><%= message.content %></p>
       </div>
