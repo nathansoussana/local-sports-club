@@ -56,7 +56,7 @@
 
       <%# Participants Section %>
       <div>
-        <h5 class="pb-4">Participants (<%= @event.participants.size + 1 %>)</h5>
+        <h5 class="pb-4">Participants (<%= @event.participants.size + 1 %>/<%= @event.participant_number %>)</h5>
         <div class="d-flex">
           <div class="row g-2 col-12">
             <% if policy(@event).edit? %>
@@ -96,15 +96,12 @@
               <%= button_to 'Join', event_participants_path(@event), method: :post, class: "btn btn-dark me-2" %>
               <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-outline-dark me-2" if @participant = Participant.find_by(event: @event, user: current_user) %>
               <%= link_to "Back", events_path, class: "btn btn-outline-dark  me-2" %>
-              <span><%= pluralize(@event.participant_number - @event.participants.count - 1, 'spot') %> left!</span>
             <% else %>
               <%= button_to 'Leave', event_participant_path(@event), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-outline-dark me-2" %>
               <%= link_to "Back", events_path, class: "btn btn-outline-dark me-2" %>
-              <span>The event is full!</span>
             <% end %>
           </div>
         <% end %>
-        
       </div>
 
       <div class="py-3"></div>
