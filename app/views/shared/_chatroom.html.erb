@@ -1,10 +1,10 @@
-<div class="container chatroom">
+<div class="container chatroom scrollable border">
   <div class="messages">
     <% messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
           <strong><%= message.user.first_name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+          <i><%= message.created_at.strftime("%A %b %e at %R") %></i>
         </small>
         <p><%= message.content %></p>
       </div>
@@ -12,11 +12,13 @@
   </div>
 </div>
 
-<%= simple_form_for [chatroom.event, chatroom, message], html: {class: "d-flex mx-5"} do |f| %>
+<%= simple_form_for [chatroom.event, chatroom, message], html: {class: "d-flex mt-2"} do |f| %>
   <%= f.input :content,
+    input_html: { class: '' },
     label: false,
     placeholder: "Type your message for #{chatroom.event.name}",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-dark" %>
+  <%= f.submit "Send", class: "btn btn-dark mb-3" %>
 <% end %>
+</div>
