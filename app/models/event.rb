@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   belongs_to :sport
   belongs_to :user
   has_many :participants, dependent: :destroy
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
 
   validates :name, presence: true
   validates :date, presence: true
