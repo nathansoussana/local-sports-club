@@ -25,3 +25,10 @@ module LocalSportsClub
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+require 'cloudinary'
+
+Cloudinary.config do |config|
+  config.cloud_name = 'dur6lrkaz'
+  config.api_key = '314517496769561'
+  config.api_secret = 'Ro6UHmHM8Pg-IcgfIjLRb16XQFI'
+end

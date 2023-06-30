@@ -19,3 +19,17 @@
     margin-bottom: 20px;
   }
 }
+
+.card {
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: .5rem;
+  padding: .5rem;
+  max-width: 300px;
+  margin: 0 auto;
+  display: none;
+}
+
+.card.active {
+  display: block;
+}
