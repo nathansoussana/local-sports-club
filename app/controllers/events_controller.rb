@@ -17,6 +17,9 @@ class EventsController < ApplicationController
     @creator = @event.user
     @participant = Participant.new
     @sport = @event.sport
+    @chatroom = @event.chatroom
+    @messages = @chatroom.messages
+    @message = Message.new
     authorize @event
   end
 
