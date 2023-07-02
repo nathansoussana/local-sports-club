@@ -3,7 +3,6 @@ class SportsController < ApplicationController
 
   def index
     @sports = Sport.all
-    @sport=Sport.new
   end
 
   def show

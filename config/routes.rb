@@ -10,8 +10,14 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :participants, only: [:create, :destroy]
+    resource :chatroom do
+      resources :messages, only: :create
+    end
   end
 
   resources :sports
   resources :users, only: [:edit, :update]
+
+  get '/events/search', to: 'events#search', as: 'event_search'
+
 end

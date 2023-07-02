@@ -1,8 +1,6 @@
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+<%= simple_form_for :search, url: events_path, method: :get do |f| %>
   <div class="search-form-control form-group d-flex">
-    <input class="form-control string required me-2" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-dark">
-      Search
-    </button>
+    <%= f.input :query, as: :string, required: true, input_html: { class: 'form-control me-2' } %>
+    <%= f.button :submit, 'Search', class: 'btn btn-dark' %>
   </div>
 <% end %>

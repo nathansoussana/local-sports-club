@@ -3,12 +3,23 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
+
+    if params[:search].present? && params[:search][:query].present?
+      @search_query = params[:search][:query]
+      @events = Event.search(@search_query)
+    else
+      @events = Event.all
+    end
   end
 
   def show
     @event = Event.find(params[:id])
+    @creator = @event.user
     @participant = Participant.new
     @sport = @event.sport
+    @chatroom = @event.chatroom
+    @messages = @chatroom.messages
+    @message = Message.new
     authorize @event
   end
 
@@ -53,5 +64,10 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :address, :level, :date, :participant_number, :duration, :description, :sport_id)
+  end
+
+  def search
+    @search_query = params[:search_query]
+    @events = Event.search(@search_query)
   end
 end
