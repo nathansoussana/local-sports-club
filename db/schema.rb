@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_072936) do
   create_table "user_sports", force: :cascade do |t|
     t.bigint "sport_id", null: false
     t.bigint "user_id", null: false
-    t.string "level", null: false
+    t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sport_id"], name: "index_user_sports_on_sport_id"

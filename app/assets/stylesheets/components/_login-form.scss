@@ -28,8 +28,10 @@
   max-width: 300px;
   margin: 0 auto;
   display: none;
+  animation: fade 250ms ease-in-out forwards;
 }
 
 .card.active {
   display: block;
+  animation: fade 250ms ease-in-out forwards;
 }

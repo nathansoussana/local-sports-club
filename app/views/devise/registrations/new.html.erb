@@ -12,21 +12,28 @@
               <%= f.input :last_name, required: true, input_html: { autocomplete: "family-name" } %>
               <%= f.input :birth_date, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, order: [:day, :month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, required: true, input_html: { autocomplete: "bday" } %>
               <%= f.input :gender, collection: ['Male', 'Female', 'Other', 'Prefer not to say'], include_blank: true %>
+              <button type="button" data-next class="btn btn-dark me-2">Next</button>
+            </div>
+            <div class="card" data-step>
               <%= f.input :about, as: :text, input_html: { rows: 5 } %>
               <%= f.input :location, required: true, input_html: { autocomplete: "address" } %>
               <%= f.input :photo, as: :file %>
               <button type="button" data-next class="btn btn-dark me-2">Next</button>
+              <button type="button" data-previous class="btn btn-dark me-2">Previous</button>
             </div>
             <div class="card" data-step>
               <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "Select sports" %>
+              <% f.object.sports.each do |sport| %>
+                <div class="sport-level-selection">
+                  <%= f.label :level, "Select level for #{sport.name}" %>
+                  <%= f.select :level, options_for_select(['Beginner', 'Intermediate', 'Advanced']), { prompt: "Select level" }, { required: true, id: "user_sport_#{sport.id}_level" } %>
+                  <%= f.hidden_field :sport_id, value: sport.id %>
+                </div>
+              <% end %>
               <button type="button" data-next class="btn btn-dark me-2">Next</button>
               <button type="button" data-previous class="btn btn-dark me-2">Previous</button>
             </div>
             <div class="card" data-step>
-              <%= f.fields_for :user_sports do |user_sports_fields| %>
-                <%= user_sports_fields.label :level, "Select level" %>
-                <%= user_sports_fields.select :level, options_for_select(['Beginner', 'Intermediate', 'Advanced']), prompt: "Select level", required: true %>
-              <% end %>
               <button type="submit" class="btn btn-dark me-2">Submit</button>
               <button type="button" data-previous class="btn btn-dark me-2">Previous</button>
             </div>
