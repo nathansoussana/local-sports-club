@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_30_072936) do
-  # These are extensions that must be enabled in order to support this database
+
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_090434) do
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -40,9 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_072936) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_093554) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  end
 
   create_table "chatrooms", force: :cascade do |t|
     t.bigint "event_id", null: false
@@ -56,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_093554) do
     t.string "name"
     t.string "address"
     t.string "level"
-    t.date "date"
+    t.datetime "date"
     t.integer "participant_number"
     t.integer "duration"
     t.bigint "user_id", null: false

@@ -29,7 +29,7 @@
           </div>
           <div class="col-6 col-md-4">
             <h6>Date</h6>
-            <p><%= @event.date %></p>
+            <p><%= @event.date.strftime("%e %B %Y, %H:%M") %></p>
           </div>
           <div class="col-6 col-md-4">
             <h6>Max participants</h6>
@@ -116,7 +116,7 @@
   </div>
 
   </div>
-    
+
     <div class="py-3"></div>
 
     <%# Chat Section %>
