@@ -27,7 +27,7 @@
           </h5>
           <div class="card-event-date d-flex align-items-center mb-2">
             <div class="me-2">📆</div>
-            <div><%= event.date %></div>
+            <div><%= event.date.strftime("%e %B %Y, %H:%M") %></div>
           </div>
           <div class="card-event-location d-flex align-items-center mb-2">
             <div class="me-2">📍</div>
