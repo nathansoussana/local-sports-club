@@ -5,7 +5,10 @@
     <%= f.association :sport, prompt: "Select a sport" %>
     <%= f.input :level, collection: [[ "Beginner", "Beginner" ], [ "Intermediate", "Intermediate" ], [ "Advanced", "Advanced" ], [ "Open for all", "Open for all" ]], prompt: "Select an option" %>
     <%= f.input :date, as: :string, input_html: { data: { flatpickr_target: "date" } } %>
-    <%= f.input :address %>
+    <%= f.input :address,
+      input_html: {data: {address_autocomplete_target: "address"}},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+    %>
     <%= f.input :participant_number, label: 'Number of participants', as: :integer %>
     <%= f.input :duration, label: 'For how long will the event last, in hours?' %>
     <%= f.input :description, label: 'Give the participants the additional info they need!' %>

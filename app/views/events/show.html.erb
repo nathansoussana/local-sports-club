@@ -14,7 +14,7 @@
 <div class="py-1"></div>
 
 <%# Event Information %>
-<div class="container-xxl py-4 d-flex">
+<div class="container-xxl py-4 d-flex flex-column">
   <div class="row">
     <%# Event Details (Left side) %>
     <div class="event-details col-12 col-lg-7">
@@ -109,13 +109,13 @@
 
     <%# Map (Right Side) %>
     <div class="map-details pt-2 col-12 col-lg-5">
-      <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;">
+      <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;" class="map-container">
 
         <%# Mapbox %>
         <div id='map' 
-          <%#style='width: 400px; height: 300px;'%> 
+          style='width: 100%; height: 100%;' 
           data-controller="map"
-          data-map-markers-value="<%= @marker.to_json %>"
+          data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
         <script>
@@ -127,21 +127,18 @@
             zoom: 9, // starting zoom
         });
         </script>
-        
       </div>
     </div>
-  </div>
-
   </div>
 
     <div class="py-3"></div>
 
     <%# Chat Section %>
-  <div class="container-xxl my-4">
-    <div class="card-show d-flex flex-row">
-      <h5 class="pt-2 pb-4">Chat</h5>
-    </div>
-    <%= render "shared/chatroom", messages: @messages, chatroom: @chatroom, message: @message %>
-  </div>
+      <div class="container-xxl my-4">
+        <div class="card-show d-flex flex-row">
+          <h5 class="pt-2 pb-4">Chat</h5>
+        </div>
+        <%= render "shared/chatroom", messages: @messages, chatroom: @chatroom, message: @message %>
+      </div>
 
 </div>

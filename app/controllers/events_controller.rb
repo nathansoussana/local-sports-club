@@ -23,12 +23,10 @@ class EventsController < ApplicationController
     authorize @event
 
     # Mapbox
-    @marker = @event.geocoded.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude
-      }
-    end
+    @markers = [{ 
+      lat: @event.latitude, 
+      lng: @event.longitude 
+    }]
   end
 
   def new
