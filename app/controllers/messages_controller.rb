@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        "you got mail!"
+        render_to_string(partial: "shared/message", locals: { message: @message })
       )
       head :ok
     else

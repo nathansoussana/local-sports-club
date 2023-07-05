@@ -5,10 +5,10 @@
     <% messages.each do |message| %>
       <%= render "shared/message", message: message %>
     <% end %>
-    </div>
   </div>
 
-<%= simple_form_for [chatroom.event, chatroom, message], html: {class: "d-flex mt-2"} do |f| %>
+
+<%= simple_form_for [chatroom.event, chatroom, message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex mt-2" } do |f| %>
   <%= f.input :content,
     input_html: { class: '' },
     label: false,

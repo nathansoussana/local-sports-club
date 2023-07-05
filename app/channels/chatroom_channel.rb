@@ -1,7 +1,6 @@
 class ChatroomChannel < ApplicationCable::Channel
   def subscribed
-    event = Event.find(params[:id])
-    chatroom = event.chatroom
+    chatroom = Chatroom.find(params[:id])
     stream_for chatroom
   end
 

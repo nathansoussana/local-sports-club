@@ -61,18 +61,18 @@
           <div class="row g-2 col-12">
             <% if policy(@event).edit? %>
               <div class="col-12 col-lg-6">
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <%= image_tag "https://i.pravatar.cc/400?img=67", class: "avatar me-2" %>
                 <%= "You (Host)" %>
               </div>
             <% else %>
               <div class="col-12 col-lg-6">
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar  me-2" %>
+                <%= image_tag "https://i.pravatar.cc/400?img=67", class: "avatar  me-2" %>
                 <%= @event.user.email %>
               </div>
             <% end %>
             <% @event.participants.each do |participant| %>
               <div class="col-12 col-lg-6">
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <%= image_tag "https://i.pravatar.cc/400?img=67", class: "avatar me-2" %>
                 <%= "#{participant.user.email}" %>
               </div>
             <% end %>
