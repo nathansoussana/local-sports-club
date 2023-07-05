@@ -124,7 +124,11 @@
     <div class="card-show d-flex flex-row">
       <h5 class="pt-2 pb-4">Chat</h5>
     </div>
-    <%= render "shared/chatroom", messages: @messages, chatroom: @chatroom, message: @message %>
+    <div>
+      <div>
+        <%= render "shared/chatroom", messages: @messages, chatroom: @chatroom, message: @message, event: @event %>
+      </div>
+    </div>
   </div>
 
 </div>

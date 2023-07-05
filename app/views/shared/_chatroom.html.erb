@@ -1,32 +1,12 @@
-<div class="container-xxl chatroom scrollable border">
-  <div class="messages px-2 pt-3">
+<div class="container-xxl chatroom scrollable border"
+  data-controller="chatroom-subscription"
+  data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
+  <div class="messages px-2 pt-3" data-chatroom-subscription-target="messages">
     <% messages.each do |message| %>
-      <div id="message-<%= message.id %>" class="mb-4">
-      <% if message.user == current_user %>
-        <div style="text-align: right;">
-          <div class="mb-2">
-            <small>
-              Me &nbsp;&#183;&nbsp; <%= message.created_at.strftime("%A %b %e at %R") %>
-            </small>
-          </div>
-          <div>
-            <p><span class="message-box message-self"><%= message.content %></span></p>
-          </div>
-        </div>
-      <% else %>
-        <div style="text-align: left;">
-          <div class="mb-2">
-            <small>
-              <%= message.user.email %> &nbsp;&#183;&nbsp; <%= message.created_at.strftime("%A %b %e at %R") %>
-            </small>
-          </div>
-          <p><span class="message-box message-else"><%= message.content %></span></p>
-        </div>
-      <% end %>
-      </div>
+      <%= render "shared/message", message: message %>
     <% end %>
+    </div>
   </div>
-</div>
 
 <%= simple_form_for [chatroom.event, chatroom, message], html: {class: "d-flex mt-2"} do |f| %>
   <%= f.input :content,

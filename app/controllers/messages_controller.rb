@@ -9,7 +9,11 @@ class MessagesController < ApplicationController
     authorize @message
 
     if @message.save
-      redirect_to event_path(@event, anchor: "wall")
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        "you got mail!"
+      )
+      head :ok
     else
       render "events/show", status: :unprocessable_entity
     end
