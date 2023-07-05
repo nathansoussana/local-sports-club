@@ -110,7 +110,19 @@
     <%# Map (Right Side) %>
     <div class="map-details pt-2 col-12 col-lg-5">
       <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;">
-        <img src="https://assets.amerimacmanagement.com/wp-content/uploads/2021/11/Overhead-Map-of-Possible-Residential-Area.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+
+        <%# Mapbox %>
+        <div id='map' <%#style='width: 400px; height: 300px;'%>></div>
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibmF0aGFuc291c3NhbmEiLCJhIjoiY2xqcHAxbHdmMDBrZDNxbno2dm4zOWN2cCJ9.RhShrzUypxLaFmGgJUQN3A';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9, // starting zoom
+        });
+        </script>
+        
       </div>
     </div>
   </div>
