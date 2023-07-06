@@ -1,9 +1,14 @@
 <div class="container-xxl chatroom scrollable border"
   data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
+  data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>"
+  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class="messages px-2 pt-3" data-chatroom-subscription-target="messages">
     <% messages.each do |message| %>
-      <%= render "shared/message", message: message %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+      <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+        <%= render "shared/message", message: message %>
+      </div>
+      </div>
     <% end %>
   </div>
 
