@@ -37,7 +37,16 @@
           <h5 class="mb-0">My Upcoming Events</h5>
           <a href="#" class="btn btn-link text-muted">Show all</a>
         </div>
-        <!-- Add your upcoming events section here -->
+        <% if @events.any? %>
+          <h5>My Events:</h5>
+          <ul>
+            <% @events.each do |event| %>
+              <li><%= event.name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No events found.</p>
+        <% end %>
       </div>
     </div>
   </div>
