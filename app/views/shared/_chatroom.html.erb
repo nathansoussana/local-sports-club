@@ -4,11 +4,19 @@
   data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class="messages px-2 pt-3" data-chatroom-subscription-target="messages">
     <% messages.each do |message| %>
-      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-      <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-        <%= render "shared/message", message: message %>
-      </div>
-      </div>
+      <% if message.user == current_user %>
+        <div class="message-row d-flex flex-column align-items-end">
+          <div class="sender-style d-flex flex-column align-items-end">
+            <%= render "shared/message", message: message %>
+          </div>
+        </div>
+      <% else %>
+        <div class="message-row d-flex flex-column align-items-start">
+            <div class="receiver-style d-flex flex-column align-items-start">
+              <%= render "shared/message", message: message %>
+            </div>
+          </div>
+      <% end %>
     <% end %>
   </div>
 

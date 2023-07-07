@@ -1,23 +1,7 @@
-<div id="message-<%= message.id %>" class="mb-4">
-   <% if message.user == current_user %>
-     <div style="text-align: right;">
-      <div class="mb-2">
-         <small>
-           Me &nbsp;&#183;&nbsp; <%= message.created_at.strftime("%A %b %e at %R") %>
-         </small>
-       </div>
-         <div>
-        <p><span class="message-box message-self"><%= message.content %></span></p>
-         </div>
-      </div>
-  <% else %>
-     <div style="text-align: left;">
-      <div class="mb-2">
-         <small>
-           <%= message.user.email %> &nbsp;&#183;&nbsp; <%= message.created_at.strftime("%A %b %e at %R") %>
-         </small>
-         </div>
-      <p><span class="message-box message-else"><%= message.content %></span></p>
-       </div>
-  <% end %>
-</div>
+<p class="mb-0 small pb-2">
+  <%= message.user.email %> &nbsp;&#183;&nbsp; <%= message.created_at.strftime("%A %b %e at %R") %>
+</p>
+<p class="mb-0">
+  <%= message.content %>
+</p>
+
