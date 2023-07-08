@@ -54,31 +54,43 @@
       <div class="separator"></div>
       <div class="py-4"></div>
 
-      <%# Participants Section %>
-      <div>
-        <h5 class="pt-2 pb-4">Participants (<%= @event.participants.size + 1 %>/<%= @event.participant_number %>)</h5>
-        <div class="d-flex">
-          <div class="row g-2 col-12">
-            <% if policy(@event).edit? %>
-              <div class="col-12 col-lg-6">
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
-                <%= "You (Host)" %>
-              </div>
-            <% else %>
-              <div class="col-12 col-lg-6">
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar  me-2" %>
-                <%= @event.user.email %>
-              </div>
-            <% end %>
-            <% @event.participants.each do |participant| %>
-              <div class="col-12 col-lg-6">
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
-                <%= "#{participant.user.email}" %>
-              </div>
-            <% end %>
-          </div>
+     <%# Participants Section %>
+<div>
+  <h5 class="pt-2 pb-4">Participants (<%= @event.participants.size + 1 %>/<%= @event.participant_number %>)</h5>
+  <div class="d-flex">
+    <div class="row g-2 col-12">
+      <% if policy(@event).edit? %>
+        <div class="col-12 col-lg-6">
+          <% if current_user.photo.attached? %>
+            <%= image_tag url_for(current_user.photo), class: "avatar me-2" %>
+          <% else %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+          <% end %>
+          <%= "You (Host)" %>
         </div>
-      </div>
+      <% else %>
+        <div class="col-12 col-lg-6">
+          <% if @event.user.photo.attached? %>
+            <%= image_tag url_for(@event.user.photo), class: "avatar me-2" %>
+          <% else %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+          <% end %>
+          <%= @event.user.email %>
+        </div>
+      <% end %>
+      <% @event.participants.each do |participant| %>
+        <div class="col-12 col-lg-6">
+          <% if participant.user.photo.attached? %>
+            <%= image_tag url_for(participant.user.photo), class: "avatar me-2" %>
+          <% else %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+          <% end %>
+          <%= "#{participant.user.email}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
       <div class="py-4"></div>
 

@@ -30,9 +30,13 @@
             <%= link_to "Components", pages_components_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar", alt: "dropdown menu" %>
-          </a>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.photo.attached? %>
+                <%= image_tag url_for(current_user.photo), class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar", alt: "dropdown menu" %>
+              <% end %>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>

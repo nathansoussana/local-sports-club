@@ -1,52 +1,46 @@
 <div class="row">
   <div class="col-md-5 mx-auto">
     <div class="bg-white shadow rounded overflow-hidden">
-      <div class="px-4 pt-4 pb-2 cover">
+      <div class="px-4 pt-0 pb-4 cover">
         <div class="media align-items-end profile-head">
           <div class="profile mr-3">
-            <%= cl_image_tag @user.photo.key, width: 130, class: "rounded-circle img-thumbnail" %>
+            <%= cl_image_tag @user.photo.key, width: 130, class: "rounded mb-2 img-thumbnail" %>
             <% if current_user == @user %>
-              <a href="<%= edit_user_path(@user) %>" class="btn btn-outline-dark btn-sm btn-block mt-3">Edit profile</a>
+              <a href="<%= edit_user_registration_path %>" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
             <% end %>
           </div>
-          <div class="media-body">
-            <h4 class="mt-0 mb-1">
+          <div class="media-body mb-5">
+            <h4 class="mt-0 mb-0">
               <%= @user.first_name %> <%= @user.last_name %> |
               <%= calculate_age(@user.birth_date) %> | <%= @user.gender %>
             </h4>
-            <p class="small text-muted mb-2">
+            <p class="small mb-4">
               <i class="fas fa-map-marker-alt mr-2"></i><%= @user.location %>
             </p>
           </div>
         </div>
       </div>
       <div class="px-4 py-3">
-        <h5 class="mb-3">About</h5>
-        <p><%= @user.about %></p>
-      </div>
-      <div class="px-4 py-3 border-top">
-        <h5 class="mb-3">Sports</h5>
-        <% @user.user_sports.each do |user_sport| %>
-          <p><strong>Sport:</strong> <%= user_sport.sport.name %></p>
-          <p><strong>Level:</strong> <%= user_sport.level %></p>
-          <hr>
+        <h5 class="mb-0">Sports</h5>
+        <% if @user_sports.any? %>
+          <ul>
+            <% @user_sports.each do |user_sport| %>
+              <li><%= user_sport.sport.name %> - Level: <%= user_sport.level %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No sports selected yet.</p>
         <% end %>
       </div>
-      <div class="py-4 px-4 border-top">
+      <div class="px-4 py-3">
+        <h5 class="mb-0">About</h5>
+        <p><%= @user.about %></p>
+      </div>
+      <div class="py-4 px-4">
         <div class="d-flex align-items-center justify-content-between mb-3">
           <h5 class="mb-0">My Upcoming Events</h5>
           <a href="#" class="btn btn-link text-muted">Show all</a>
         </div>
-        <% if @events.any? %>
-          <h5>My Events:</h5>
-          <ul>
-            <% @events.each do |event| %>
-              <li><%= event.name %></li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>No events found.</p>
-        <% end %>
       </div>
     </div>
   </div>

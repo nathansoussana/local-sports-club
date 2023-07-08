@@ -21,15 +21,27 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+
+    <%= f.input :first_name, required: true, input_html: { autocomplete: "given-name" }, hint: "Your first name" %>
+    <%= f.input :last_name, required: true, input_html: { autocomplete: "family-name" }, hint: "Your last name" %>
+    <%= f.input :birth_date, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, order: [:day, :month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, required: true, input_html: { autocomplete: "bday" }, hint: "Your date of birth" %>
+    <%= f.input :gender, collection: ['Male', 'Female', 'Other', 'Prefer not to say'], include_blank: true, hint: "Your gender" %>
+    <%= f.input :about, as: :text, input_html: { rows: 5 }, hint: "Write a short description about yourself" %>
+    <%= f.input :location, required: true, input_html: { autocomplete: "address" }, hint: "Your current location" %>
+
+    <% selected_sports = resource.sports.pluck(:id) %>
+    <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "Select sports", selected: selected_sports %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-dark btn-lg" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div>
+  Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-dark btn-lg" %>
+</div>
 
 <%= link_to "Back", :back %>
