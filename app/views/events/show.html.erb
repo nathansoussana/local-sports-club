@@ -14,7 +14,7 @@
 <div class="py-1"></div>
 
 <%# Event Information %>
-<div class="container-xxl py-4 d-flex">
+<div class="container-xxl py-4 d-flex flex-column">
   <div class="row">
     <%# Event Details (Left side) %>
     <div class="event-details col-12 col-lg-7">
@@ -109,12 +109,26 @@
 
     <%# Map (Right Side) %>
     <div class="map-details pt-2 col-12 col-lg-5">
-      <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;">
-        <img src="https://assets.amerimacmanagement.com/wp-content/uploads/2021/11/Overhead-Map-of-Possible-Residential-Area.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+      <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;" class="map-container">
+
+        <%# Mapbox %>
+        <div id='map' 
+          style='width: 100%; height: 100%;' 
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>""
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibmF0aGFuc291c3NhbmEiLCJhIjoiY2xqcHAxbHdmMDBrZDNxbno2dm4zOWN2cCJ9.RhShrzUypxLaFmGgJUQN3A';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9, // starting zoom
+        });
+        </script>
       </div>
     </div>
-  </div>
-
   </div>
 
     <div class="py-3"></div>
