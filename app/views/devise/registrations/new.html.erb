@@ -23,17 +23,19 @@
             </div>
             <div class="card" data-step>
               <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "Select sports" %>
-              <% f.object.sports.each do |sport| %>
-                <div class="sport-level-selection">
-                  <%= f.label :level, "Select level for #{sport.name}" %>
-                  <%= f.select :level, options_for_select(['Beginner', 'Intermediate', 'Advanced']), { prompt: "Select level" }, { required: true, id: "user_sport_#{sport.id}_level" } %>
-                  <%= f.hidden_field :sport_id, value: sport.id %>
-                </div>
-              <% end %>
+
               <button type="button" data-next class="btn btn-dark me-2">Next</button>
               <button type="button" data-previous class="btn btn-dark me-2">Previous</button>
             </div>
             <div class="card" data-step>
+              <% Sport.all.each do |sport| %>
+                <%= f.fields_for :user_sports, @user.user_sports.build(sport: sport) do |us| %>
+                  <%= us.hidden_field :sport_id %>
+                  <%= sport.name %>
+                  <%= us.select :level, options_for_select(['Beginner', 'Intermediate', 'Advanced']), include_blank: true %>
+                <% end %>
+              <% end %>
+
               <button type="submit" class="btn btn-dark me-2">Submit</button>
               <button type="button" data-previous class="btn btn-dark me-2">Previous</button>
             </div>
