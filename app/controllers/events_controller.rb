@@ -10,10 +10,14 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "shared/list", locals: {events: @events}, formats: [:html] }
+    end
   end
 
   def show
-    @event = Event.find(params[:id])
     @creator = @event.user
     @participant = Participant.new
     @sport = @event.sport
@@ -21,6 +25,12 @@ class EventsController < ApplicationController
     @messages = @chatroom.messages
     @message = Message.new
     authorize @event
+
+    # Mapbox
+    @markers = {
+      lat: @event.latitude,
+      lng: @event.longitude
+    }
   end
 
   def new

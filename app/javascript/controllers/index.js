@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
@@ -12,3 +18,9 @@ application.register("hello", HelloController)
 
 import SignUpController from "./sign_up_controller"
 application.register("sign-up", SignUpController)
+
+import SearchEventsController from "./search_events_controller"
+application.register("search-events", SearchEventsController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)

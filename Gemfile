@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.5"
 # Faker
 gem 'faker'
 
+# Geocoder
+gem "geocoder"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

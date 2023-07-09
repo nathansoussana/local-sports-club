@@ -1,53 +1,18 @@
-<div style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1876&q=80); background-position: center center; background-size: cover;">
-  <div class="container-xxl background-container d-flex flex-column">
-    <div class="my-auto d-flex flex-column text-center justify-content-center">
-      <h1>Events around you</h1>
-      <p>Check events happening around you: search by sport, location, or simply browse around.</p>
-      <div class="d-flex justify-content-center">
-        <%= render partial: "shared/search_bar" %>
+<div data-controller="search-events">
+  <div style="background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1876&q=80); background-position: center center; background-size: cover;">
+    <div class="container-xxl background-container d-flex flex-column">
+      <div class="my-auto d-flex flex-column text-center justify-content-center">
+        <h1>Events around you</h1>
+        <p>Check events happening around you: search by sport, location, or simply browse around.</p>
+        <div class="d-flex justify-content-center">
+          <%= render partial: "shared/search_bar" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container-xxl py-4">
-  <%# Event Cards %>
-  <div class="row g-3 d-flex">
-
-    <% @events.each do |event| %>
-    <div class="col-md-6 col-lg-4">
-      <div class="card-event d-flex ">
-        <%# Content %>
-        <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
-          <h6 class="card-event-title">
-            <%= event.sport.name %>
-          </h6>
-          <h5 class="card-event-title mb-3">
-            <%= event.name %>!
-          </h5>
-          <div class="card-event-date d-flex align-items-center mb-2">
-            <div class="me-2">📆</div>
-            <div><%= event.date.strftime("%e %B %Y, %H:%M") %></div>
-          </div>
-          <div class="card-event-location d-flex align-items-center mb-2">
-            <div class="me-2">📍</div>
-            <div><%= event.address %></div>
-          </div>
-          <div class="card-event-details align-items-center d-flex">
-            <div class="me-2">💪</div>
-            <div><%= event.level %></div>
-          </div>
-        </div>
-
-        <%# Link %>
-        <div class="card-link w-25 d-flex justify-content-center align-items-center">
-          <%= link_to event do %>
-            <i class="fa-solid fa-chevron-right p-4" style="color: #000000;"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
+  <div class="container-xxl py-4">
+    <%# Event Cards %>
+    <%= render partial: "shared/list" %>
   </div>
 </div>
