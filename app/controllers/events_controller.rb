@@ -26,6 +26,12 @@ class EventsController < ApplicationController
     @messages = @chatroom.messages
     @message = Message.new
     authorize @event
+
+    # Mapbox
+    @markers = {
+      lat: @event.latitude,
+      lng: @event.longitude
+    }
   end
 
   def new
