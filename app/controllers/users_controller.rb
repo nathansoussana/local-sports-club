@@ -7,12 +7,13 @@ class UsersController < ApplicationController
     @joined_events = @user.events.where('date >= ?', Date.today)
     authorize @user
   end
+
   def new
     @user = User.new
   end
+
   def create
     @user = User.new(user_params.except(:levels))
-
     if @user.save
       params[:levels].each do |sport_id, level|
         UserSport.create(user: @user, sport_id: sport_id, level: level)

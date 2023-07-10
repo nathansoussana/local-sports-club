@@ -15,7 +15,7 @@
                 <%= f.input :last_name, required: true, input_html: { autocomplete: "family-name" } %>
                 <%= f.input :birth_date, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, order: [:day, :month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, required: true, input_html: { autocomplete: "bday" } %>
                 <%= f.input :gender, collection: ['Male', 'Female', 'Other', 'Prefer not to say'], include_blank: true %>
-                <button type="button" data-next class="btn btn-dark mt-4">Next</button>
+                <button type="button" data-next class="btn btn-dark mt-3">Next</button>
               </div>
 
               <%# Location, Photo & About  %>
@@ -23,14 +23,14 @@
                 <%= f.input :about, as: :text, input_html: { rows: 5 } %>
                 <%= f.input :location, required: true, input_html: { autocomplete: "address" } %>
                 <%= f.input :photo, as: :file %>
-                <button type="button" data-next class="btn btn-dark mb-2 mt-4">Next</button>
+                <button type="button" data-next class="btn btn-dark mb-2 mt-3">Next</button>
                 <button type="button" data-previous class="btn btn-outline-dark">Previous</button>
               </div>
 
               <%# Sports %>
               <div class="card" data-step>
                 <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "What sports do you play?" %>
-                <button type="button" data-next class="btn btn-dark mb-2  mt-4">Next</button>
+                <button type="button" data-next class="btn btn-dark mb-2  mt-3">Next</button>
                 <button type="button" data-previous class="btn btn-outline-dark">Previous</button>
               </div>
 
@@ -43,7 +43,7 @@
                     <%= us.select :level, options_for_select(['Beginner', 'Intermediate', 'Advanced']), include_blank: true %>
                   <% end %>
                 <% end %>
-                <button type="submit" class="btn btn-dark mb-2 mt-4">Submit</button>
+                <button type="submit" class="btn btn-dark mb-2 mt-3">Submit</button>
                 <button type="button" data-previous class="btn btn-outline-dark">Previous</button>
               </div>
             <% end %>
