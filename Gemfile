@@ -88,3 +88,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cloudinary"
+gem 'activestorage-cloudinary-service'

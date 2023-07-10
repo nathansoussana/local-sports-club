@@ -61,24 +61,36 @@
           <div class="row g-2 col-12">
             <% if policy(@event).edit? %>
               <div class="col-12 col-lg-6">
-                <%= image_tag "https://i.pravatar.cc/400?img=67", class: "avatar me-2" %>
+                <% if current_user.photo.attached? %>
+                  <%= image_tag url_for(current_user.photo), class: "avatar me-2" %>
+                <% else %>
+                  <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <% end %>
                 <%= "You (Host)" %>
               </div>
             <% else %>
               <div class="col-12 col-lg-6">
-                <%= image_tag "https://i.pravatar.cc/400?img=67", class: "avatar  me-2" %>
+                <% if @event.user.photo.attached? %>
+                  <%= image_tag url_for(@event.user.photo), class: "avatar me-2" %>
+                <% else %>
+                  <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <% end %>
                 <%= @event.user.email %>
               </div>
             <% end %>
             <% @event.participants.each do |participant| %>
               <div class="col-12 col-lg-6">
-                <%= image_tag "https://i.pravatar.cc/400?img=67", class: "avatar me-2" %>
+                <% if participant.user.photo.attached? %>
+                  <%= image_tag url_for(participant.user.photo), class: "avatar me-2" %>
+                <% else %>
+                  <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+                <% end %>
                 <%= "#{participant.user.email}" %>
               </div>
             <% end %>
           </div>
         </div>
-      </div>
+      </div>          
 
       <div class="py-4"></div>
 
@@ -112,8 +124,8 @@
       <div style="width: 100%; height: 100%; min-height: 35vh; display: flex; justify-content: center; align-items: center;" class="map-container">
 
         <%# Mapbox %>
-        <div id='map' 
-          style='width: 100%; height: 100%;' 
+        <div id='map'
+          style='width: 100%; height: 100%;'
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>""
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

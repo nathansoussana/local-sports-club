@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get '/pages/components', to: 'pages#components'
+  get 'users/:id', to: 'users#show', as: 'user'
 
   resources :events do
     resources :participants, only: [:create, :destroy]
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :sports
+  resources :users, only: [:edit, :update]
 
   get '/events/search', to: 'events#search', as: 'event_search'
 
