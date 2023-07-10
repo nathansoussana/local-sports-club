@@ -1,6 +1,9 @@
-<%= simple_form_for :search, url: events_path, method: :get do |f| %>
+<%= simple_form_for :search, url: events_path, method: :get, html: {data: {search_events_target: "form"}} do |f| %>
   <div class="search-form-control form-group d-flex">
-    <%= f.input :query, as: :string, required: true, input_html: { class: 'form-control me-2' } %>
+    <%= f.text_field :query, class: 'form-control me-2', data: {
+      search_events_target: 'input',
+      action: 'keyup->search-events#update'
+    }, required: true %>
     <%= f.button :submit, 'Search', class: 'btn btn-dark' %>
   </div>
 <% end %>

@@ -9,12 +9,21 @@ class MessagesController < ApplicationController
     authorize @message
 
     if @message.save
-      redirect_to event_path(@event, anchor: "wall")
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        {
+          message: render_to_string(partial: "shared/message", locals: { message: @message}),
+          sender_id: @message.user.id
+        }
+      )
+      head :ok
     else
       render "events/show", status: :unprocessable_entity
     end
 
   end
+
+  
 
   private
 
