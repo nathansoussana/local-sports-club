@@ -54,42 +54,6 @@
     <% end %>
   </div>
 
-  <!-- My Past Events -->
-  <div class="py-4">
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <h5 class="mb-0">My Past Events</h5>
-    </div>
-    <div class="row g-3 d-flex">
-      <% @past_events.each do |event| %>
-        <div class="col-md-6 col-lg-4">
-          <div class="card-event d-flex ">
-            <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
-              <h6 class="card-event-title"><%= event.sport.name %></h6>
-              <h5 class="card-event-title mb-3"><%= event.name %>!</h5>
-              <div class="card-event-date d-flex align-items-center mb-2">
-                <div class="me-2">📆</div>
-                <div><%= event.date.strftime("%e %B %Y, %H:%M") %></div>
-              </div>
-              <div class="card-event-location d-flex align-items-center mb-2">
-                <div class="me-2">📍</div>
-                <div><%= event.address %></div>
-              </div>
-              <div class="card-event-details align-items-center d-flex">
-                <div class="me-2">💪</div>
-                <div><%= event.level %></div>
-              </div>
-            </div>
-            <div class="card-link w-25 d-flex justify-content-center align-items-center">
-              <%= link_to event do %>
-                <i class="fa-solid fa-chevron-right p-4" style="color: #000000;"></i>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
   <!-- My Upcoming Events -->
   <div class="py-4">
     <div class="d-flex align-items-center justify-content-between mb-3">
@@ -124,6 +88,42 @@
         </div>
       <% end %>
     </div>
+
+    <!-- My Past Events -->
+  <div class="py-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h5 class="mb-0">My Past Events</h5>
+    </div>
+    <div class="row g-3 d-flex">
+      <% @past_events.each do |event| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card-event d-flex ">
+            <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
+              <h6 class="card-event-title"><%= event.sport.name %></h6>
+              <h5 class="card-event-title mb-3"><%= event.name %>!</h5>
+              <div class="card-event-date d-flex align-items-center mb-2">
+                <div class="me-2">📆</div>
+                <div><%= event.date.strftime("%e %B %Y, %H:%M") %></div>
+              </div>
+              <div class="card-event-location d-flex align-items-center mb-2">
+                <div class="me-2">📍</div>
+                <div><%= event.address %></div>
+              </div>
+              <div class="card-event-details align-items-center d-flex">
+                <div class="me-2">💪</div>
+                <div><%= event.level %></div>
+              </div>
+            </div>
+            <div class="card-link w-25 d-flex justify-content-center align-items-center">
+              <%= link_to event do %>
+                <i class="fa-solid fa-chevron-right p-4" style="color: #000000;"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   </div>
 </div>

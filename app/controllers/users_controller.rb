@@ -3,8 +3,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = @user.events
     @user_sports = UserSport.where(user: @user)
+
     @past_events = @user.events.where('date < ?', Date.today)
+    @past_events_host = @user.events_as_owner.where('date < ?', Date.today)
+    
+    @past_events = @past_events + @past_events_host
+
     @joined_events = @user.events.where('date >= ?', Date.today)
+    @joined_events_host = @user.events_as_owner.where('date >= ?', Date.today)
+
+    @joined_events = @joined_events + @joined_events_host
     authorize @user
   end
 
