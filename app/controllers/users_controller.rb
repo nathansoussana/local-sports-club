@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = @user.events
     @user_sports = UserSport.where(user: @user)
+    @past_events = @user.events.where('date < ?', Date.today)
+    @joined_events = @user.events.where('date >= ?', Date.today)
     authorize @user
   end
   def new

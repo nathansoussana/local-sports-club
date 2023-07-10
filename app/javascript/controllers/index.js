@@ -18,7 +18,6 @@ application.register("hello", HelloController)
 
 import SignUpController from "./sign_up_controller"
 application.register("sign-up", SignUpController)
-
 import SearchEventsController from "./search_events_controller"
 application.register("search-events", SearchEventsController)
 
