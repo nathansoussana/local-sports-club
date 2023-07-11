@@ -45,7 +45,7 @@
           </div>
           <div class="col-6 col-md-4">
             <h6>Host</h6>
-            <p><span style="word-wrap: break-word;"><%= @creator.email %></span></p>
+            <p><span style="word-wrap: break-word;"><%= @creator.first_name %> <%= @creator.last_name %></span></p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
                 <% else %>
                   <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
                 <% end %>
-                <%= @event.user.email %>
+                <%= @creator.first_name %> <%= @creator.last_name %>
               </div>
             <% end %>
             <% @event.participants.each do |participant| %>
@@ -85,7 +85,7 @@
                 <% else %>
                   <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
                 <% end %>
-                <%= "#{participant.user.email}" %>
+                <%= "#{participant.user.first_name} #{participant.user.last_name}" %>
               </div>
             <% end %>
           </div>
