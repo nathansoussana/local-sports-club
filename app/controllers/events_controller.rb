@@ -11,6 +11,9 @@ class EventsController < ApplicationController
       @events = Event.all
     end
 
+    @past_events = @events.where('date < ?', Date.today)
+    @upcoming_events = @events.where('date >= ?', Date.today)
+
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: "shared/list", locals: {events: @events}, formats: [:html] }

@@ -57,7 +57,7 @@
       <h5 class="mb-0">My Upcoming Events</h5>
     </div>
     <div class="row g-3 d-flex">
-      <% @joined_events.each do |event| %>
+      <% @joined_events.sort_by{ |event| event.date }.each do |event| %>
         <div class="col-md-6 col-lg-4">
           <div class="card-event d-flex ">
             <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
@@ -94,7 +94,7 @@
         <h5 class="mb-0">My Past Events</h5>
       </div>
       <div class="row g-3 d-flex">
-        <% @past_events.each do |event| %>
+        <% @past_events.sort_by{ |event| event.date }.each do |event| %>
           <div class="col-md-6 col-lg-4">
             <div class="card-event d-flex ">
               <div class="card-event-details w-75 ps-4 py-4 d-flex flex-column justify-content-center">
