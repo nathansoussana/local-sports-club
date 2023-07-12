@@ -12,18 +12,47 @@ export default class extends Controller {
       currentStep = 0
       showCurrentStep()
     }
+
+    //const sportsCheckboxes = document.querySelectorAll('[name="user[sport_ids][]"]');
+    //console.log(sportsCheckboxes)
+    //sportsCheckboxes.forEach(checkbox => {
+    //console.log(checkbox)
+    //checkbox.addEventListener('change', handleSportsSelection);
+    //});
+
     multiStepForm.addEventListener("click", (e) => {
       if (e.target.matches("[data-next]")) {
         currentStep += 1
       } else if (e.target.matches("[data-previous]")) {
         currentStep -= 1
       }
-      showCurrentStep()
+      this.showCurrentStep()
     })
-    function showCurrentStep() {
-      formSteps.forEach((step, index) => {
-        step.classList.toggle("active", index === currentStep)
-      })
-    }
+
+
   }
+  handleSportsSelection() {
+    const levelCards = [...document.querySelectorAll('.level-card')]
+    //levelCards.forEach(card => card.style.display = 'none') // Initially hide all level cards
+    console.log(levelCards)
+    const selectedSports = [...document.querySelectorAll('[name="user[sport_ids][]"]:checked')]
+    selectedSports.forEach(sport => {
+      const correspondingLevelCard = document.querySelector(`.level-card[data-sport="${sport.value}"]`)
+      console.log(correspondingLevelCard)
+      if(correspondingLevelCard) {
+        correspondingLevelCard.style.display = 'block'; // Show the level card for selected sports
+      }
+    })
+  }
+  test() {
+    console.log("Why can't you find it?")
+  }
+  showCurrentStep() {
+    const multiStepForm = document.querySelector("[data-multi-step]")
+    const formSteps = [...multiStepForm.querySelectorAll("[data-step]")]
+    formSteps.forEach((step, index) => {
+      step.classList.toggle("active", index === currentStep)
+    })
+  }
+
 }

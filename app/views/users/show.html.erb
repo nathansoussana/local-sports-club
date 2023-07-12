@@ -4,7 +4,7 @@
 
       <%# Image %>
       <div class="profile me-4">
-        <%= cl_image_tag @user.photo.key, width: 130, class: "rounded-circle" %>
+        <%= cl_image_tag(@user.photo.key, :width => 130, :crop => "scale", class: "rounded-circle") %>
       </div>
 
       <%# User Info %>
@@ -14,7 +14,7 @@
           <% if current_user == @user %>
             <a href="<%= edit_user_registration_path %>"><i class="fa-regular fa-pen-to-square" style="color: #000000"></i></a>
           <% end %>
-          
+
         </h3>
         <p class="mb-0">
           <i class="fa-regular fa-cake-candles"></i> <%= calculate_age(@user.birth_date) %> &nbsp;
@@ -28,21 +28,10 @@
   <%# Sports %>
   <div class="pt-4 pb-2">
     <h5 class="mb-0">Sports</h5>
-    <% if @user_sports.any? %>
-      <div class="row g-3 py-4">
-        <% @user_sports.each do |user_sport| %>
-          <div class="col-6 col-md-4 col-lg-3">
-            <%= link_to sport_path(user_sport.sport), style: "text-decoration: none;" do %>
-              <%= render partial: "shared/sport_card", locals: {
-                  sport: user_sport.sport.name,
-                  url: user_sport.sport.icon } %>
-            <% end %>
-          </div>
-        <% end %>
+   <% @user_sports.each do |user_sport| %>
+  <%= user_sport.sport.name %> - <%= user_sport.level %>
+<% end %>
       </div>
-    <% else %>
-      <p>No sports selected yet.</p>
-    <% end %>
   </div>
 
   <%# About %>
