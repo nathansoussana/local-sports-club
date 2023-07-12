@@ -2,11 +2,11 @@
   <div class="container-xxl container-fluid">
     <% if user_signed_in? %>
       <%= link_to events_path, class: "navbar-brand" do %>
-        <%= image_tag "https://static.thenounproject.com/png/4704093-200.png", class: "logo" %>
+        <%= image_tag asset_path('logo-bgd-4.png'), class:"logo" %>
       <% end %>
     <% else %>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "https://static.thenounproject.com/png/4704093-200.png", class: "logo" %>
+        <%= image_tag asset_path('logo-bgd-4.png'), class:"logo" %>
       <% end %>
     <% end %>
 
