@@ -45,7 +45,7 @@ require 'faker'
       name: ["#{sport.name} time!", "#{sport.name} hangout!", "#{sport.name} meetup", "Looking for #{sport.name} buddies", "#{sport.name} competition", "#{sport.name} practice"].sample,
       address: ["23 Zollergasse, Vienna", "14 Avenue des Champs-Élysées, Paris", "7 St. Patrick's Square, Dublin", "42 Alexanderplatz, Berlin", "9 Gran Vía, Madrid", "16 Piazza del Duomo, Rome", "31 Trafalgar Square, London", "12 Herengracht, Amsterdam", "27 Karl Johans gate, Oslo"].sample,
       level: ["Beginner", "Intermediate", "Advanced"].sample,
-      date: Faker::Date.between(from: '2023-07-01', to: '2023-12-31'),
+      date: Faker::Date.between(from: '2023-07-01', to: '2023-08-31'),
       participant_number: rand(2..10),
       duration: rand(1..3),
       user_id: rand(1..3),
