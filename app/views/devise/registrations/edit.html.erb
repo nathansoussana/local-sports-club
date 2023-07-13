@@ -1,15 +1,15 @@
-<div class="banner d-flex flex-column vh-100" style="background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(<%= image_path('signup-background.jpg') %>);">
+<div class="banner d-flex flex-column">
   <div class="container">
-    <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4 d-flex flex-column justify-content-center align-items-center w-100">
 
-<h2 class ="edit-heading">Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="edit-form">
+      <h2 class ="edit-heading">Edit <%= resource_name.to_s.humanize %></h2>
     <%= f.input :email, required: true, autofocus: true %>
+
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -35,7 +35,7 @@
     <%= f.input :location, required: true, input_html: { autocomplete: "address" }, hint: "Your current location" %>
 
     <% selected_sports = resource.sports.pluck(:id) %>
-    <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "Select sports", selected: selected_sports %>
+      <%= f.input :sports, as: :select, collection: Sport.all, label: "Select sports", selected: selected_sports, input_html: { multiple: true } %>
   </div>
 
   <div class="form-actions">
@@ -51,5 +51,4 @@
 
 <%= link_to "Back", :back %>
     </div>
-  </div>
 </div>
