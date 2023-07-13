@@ -7,6 +7,9 @@
   <%= f.error_notification %>
 
   <div class="edit-form">
+    <div>
+     <%= link_to "Back", :back, class: "btn btn-dark" %>
+    </div>
       <h2 class ="edit-heading">Edit <%= resource_name.to_s.humanize %></h2>
     <%= f.input :email, required: true, autofocus: true %>
 
@@ -36,19 +39,15 @@
 
     <% selected_sports = resource.sports.pluck(:id) %>
       <%= f.input :sports, as: :select, collection: Sport.all, label: "Select sports", selected: selected_sports, input_html: { multiple: true } %>
-  </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: "btn btn-dark btn-lg" %>
+    <%= f.button :submit, "Update", class: "btn btn-dark" %>
+
+          <h5 class="cancel-question">Unhappy?<h5>
+          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-dark" %>
   </div>
+
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<div>
-  Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-dark btn-lg" %>
 </div>
-
-<%= link_to "Back", :back %>
-    </div>
+</div>
 </div>
