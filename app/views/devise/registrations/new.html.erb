@@ -29,24 +29,12 @@
             <%# Sports %>
             <div class="card" data-step>
               <%= f.collection_check_boxes :sport_ids, Sport.all, :id, :name, { multiple: true }, { class: 'form-check-input', data: { action: "change->sign-up#test" } } %>
-              <button type="button" data-next class="btn btn-dark mb-2 mt-3">Next</button>
               <button type="button" data-previous class="btn btn-outline-dark">Previous</button>
+              <% if f.object.errors.empty? %>
+                <button type="submit" class="btn btn-dark mb-2 mt-3">Submit</button>
+              <% end %>
             </div>
 
-            <%# Levels %>
-            <div class="card" data-step>
-              <% Sport.all.each do |sport| %>
-                <div class="card level-card" data-sport="<%= sport.id %>" style="display: none;">
-                  <%= f.fields_for :user_sports, @user.user_sports.build(sport: sport) do |us| %>
-                    <%= us.hidden_field :sport_id %>
-                    <%= sport.name %>
-                    <%= us.select :level, options_for_select(['Beginner', 'Intermediate', 'Advanced']), include_blank: true %>
-                  <% end %>
-                </div>
-              <% end %>
-              <button type="submit" class="btn btn-dark mb-2 mt-3">Submit</button>
-              <button type="button" data-previous class="btn btn-outline-dark">Previous</button>
-            </div>
           <% end %>
         </div>
       </div>

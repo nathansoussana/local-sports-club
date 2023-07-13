@@ -25,14 +25,19 @@
     </div>
   </div>
 
-  <%# Sports %>
-  <div class="pt-4 pb-2">
-    <h5 class="mb-0">Sports</h5>
-   <% @user_sports.each do |user_sport| %>
-  <%= user_sport.sport.name %> - <%= user_sport.level %>
-<% end %>
+<!-- Sports -->
+<div class="pt-4 pb-2">
+  <h5 class="mb-0">Sports</h5>
+  <div class="row g-3 py-4">
+    <% @user_sports.each do |user_sport| %>
+      <div class="col-6 col-md-4 col-lg-3">
+        <%= render partial: "shared/sport_card", locals: {
+            sport: user_sport.sport.name,
+            url: user_sport.sport.icon } %>
       </div>
+    <% end %>
   </div>
+</div>
 
   <%# About %>
   <div class="pb-4">
