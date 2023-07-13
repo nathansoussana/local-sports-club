@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     @past_events = @user.events.where('date < ?', Date.today)
     @past_events_host = @user.events_as_owner.where('date < ?', Date.today)
-    
+
     @past_events = @past_events + @past_events_host
 
     @joined_events = @user.events.where('date >= ?', Date.today)
