@@ -45,7 +45,14 @@
           </div>
           <div class="col-6 col-md-4">
             <h6>Host</h6>
-            <p><span style="word-wrap: break-word;"><%= @creator.first_name %> <%= @creator.last_name %></span></p>
+            <div class="d-flex align-items-center">
+              <% if @event.user.photo.attached? %>
+                <%= image_tag url_for(@event.user.photo), class: "avatar me-2" %>
+              <% else %>
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+              <% end %>
+              <%= link_to "#{@event.user.first_name} #{@event.user.last_name}", user_path(@event.user), class: "text-decoration-none", style: "color: black;" %>
+            </div>
           </div>
         </div>
       </div>
@@ -55,42 +62,42 @@
       <div class="py-4"></div>
 
       <%# Participants Section %>
-      <div>
-        <h5 class="pt-2 pb-4">Participants (<%= @event.participants.size + 1 %>/<%= @event.participant_number %>)</h5>
-        <div class="d-flex">
-          <div class="row g-2 col-12">
-            <% if policy(@event).edit? %>
-              <div class="col-12 col-lg-6">
-                <% if current_user.photo.attached? %>
-                  <%= image_tag url_for(current_user.photo), class: "avatar me-2" %>
-                <% else %>
-                  <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
-                <% end %>
-                <%= "You (Host)" %>
-              </div>
-            <% else %>
-              <div class="col-12 col-lg-6">
-                <% if @event.user.photo.attached? %>
-                  <%= image_tag url_for(@event.user.photo), class: "avatar me-2" %>
-                <% else %>
-                  <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
-                <% end %>
-                <%= @creator.first_name %> <%= @creator.last_name %>
-              </div>
-            <% end %>
-            <% @event.participants.each do |participant| %>
-              <div class="col-12 col-lg-6">
-                <% if participant.user.photo.attached? %>
-                  <%= image_tag url_for(participant.user.photo), class: "avatar me-2" %>
-                <% else %>
-                  <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
-                <% end %>
-                <%= "#{participant.user.first_name} #{participant.user.last_name}" %>
-              </div>
-            <% end %>
-          </div>
+<div>
+  <h5 class="pt-2 pb-4">Participants (<%= @event.participants.size + 1 %>/<%= @event.participant_number %>)</h5>
+  <div class="d-flex">
+    <div class="row g-2 col-12">
+      <% if policy(@event).edit? %>
+        <div class="col-12 col-lg-6">
+          <% if current_user.photo.attached? %>
+            <%= image_tag url_for(current_user.photo), class: "avatar me-2" %>
+          <% else %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+          <% end %>
+          <%= link_to "You (Host)", user_path(current_user), class: "text-decoration-none", style: "color: black;" %>
         </div>
-      </div>          
+      <% else %>
+        <div class="col-12 col-lg-6">
+          <% if @event.user.photo.attached? %>
+            <%= image_tag url_for(@event.user.photo), class: "avatar me-2" %>
+          <% else %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+          <% end %>
+          <%= link_to "#{@event.user.first_name} #{@event.user.last_name}", user_path(@event.user), class: "text-decoration-none", style: "color: black;" %>
+        </div>
+      <% end %>
+      <% @event.participants.each do |participant| %>
+        <div class="col-12 col-lg-6">
+          <% if participant.user.photo.attached? %>
+            <%= image_tag url_for(participant.user.photo), class: "avatar me-2" %>
+          <% else %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar me-2" %>
+          <% end %>
+          <%= link_to "#{participant.user.first_name} #{participant.user.last_name}", user_path(participant.user), class: "text-decoration-none", style: "color: black;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
       <div class="py-4"></div>
 
@@ -127,25 +134,25 @@
         <div id='map'
           style='width: 100%; height: 100%;'
           data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>""
+          data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
         <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibmF0aGFuc291c3NhbmEiLCJhIjoiY2xqcHAxbHdmMDBrZDNxbno2dm4zOWN2cCJ9.RhShrzUypxLaFmGgJUQN3A';
         const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [-74.5, 40], // starting position [lng, lat]
-            zoom: 9, // starting zoom
+          container: 'map', // container ID
+          style: 'mapbox://styles/mapbox/streets-v12', // style URL
+          center: [-74.5, 40], // starting position [lng, lat]
+          zoom: 9, // starting zoom
         });
         </script>
       </div>
     </div>
   </div>
 
-    <div class="py-3"></div>
+  <div class="py-3"></div>
 
-    <%# Chat Section %>
+  <%# Chat Section %>
   <div class="container-xxl my-4">
     <div class="card-show d-flex flex-row">
       <h5 class="pt-2 pb-4">Chat</h5>
@@ -156,5 +163,4 @@
       </div>
     </div>
   </div>
-
 </div>
