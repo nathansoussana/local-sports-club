@@ -2,11 +2,11 @@
   <div class="container-xxl container-fluid">
     <% if user_signed_in? %>
       <%= link_to events_path, class: "navbar-brand" do %>
-        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+        <%= image_tag asset_path('logo-bgd-4.png'), class:"logo" %>
       <% end %>
     <% else %>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+        <%= image_tag asset_path('logo-bgd-4.png'), class:"logo" %>
       <% end %>
     <% end %>
 
@@ -18,17 +18,19 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item pe-1">
-            <%= link_to "Browse", events_path, class: "nav-link" %>
+            <%= link_to "Browse Events", events_path, class: "nav-link" %>
           </li>
           <li class="nav-item pe-1">
             <%= link_to "New Event", new_event_path, class: "nav-link" %>
           </li>
+          <!--
           <li class="nav-item pe-1">
             <%= link_to "Sports", sports_path, class: "nav-link" %>
           </li>
           <li class="nav-item pe-1">
             <%= link_to "Components", pages_components_path, class: "nav-link" %>
           </li>
+          -->
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.photo.attached? %>
