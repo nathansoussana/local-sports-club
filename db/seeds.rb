@@ -63,7 +63,7 @@ require 'faker'
       # user_id: rand(10..12),
       
       # Heroku (might need an update if user ids change on Heroku)
-      user_id: [12, 13, 15, 16, 17, 18].sample,
+      user_id: [12, 13, 15].sample,
 
       description: "Looking for company to do my favorite sport"
     )
