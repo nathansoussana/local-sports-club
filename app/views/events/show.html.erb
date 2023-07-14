@@ -78,7 +78,7 @@
       <% else %>
         <div class="col-12 col-lg-6">
           <% if @event.user.photo.attached? %>
-            <%= image_tag url_for(@event.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
+            <%= image_tag url_for(@event.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1 small-avatar" %>
           <% else %>
             <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1 small-avatar" %>
           <% end %>
