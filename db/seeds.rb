@@ -8,7 +8,15 @@
 
 require 'faker'
 
-  puts "Creating sports..."
+  # Cleaning DB
+  print "Destroying events and sports... "
+  Event.destroy_all
+  Sport.destroy_all
+  puts "✅"
+
+  # Creating Sports
+  print "Creating sports... "
+
   sports = [
     { name: "Football", icon: "https://images.unsplash.com/photo-1626248801379-51a0748a5f96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80" },
     { name: "Tennis", icon: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" },
@@ -28,16 +36,16 @@ require 'faker'
     { name: "Surfing", icon: "https://images.unsplash.com/photo-1580237754524-f26ed36fa85c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2531&q=80" },
   ]
 
-  puts "Creating sports..."
-
   sports.each do |sport_attributes|
     sport = Sport.create!(sport_attributes)
-    puts "Created #{sport.name}"
   end
+  
+  puts "✅"
 
-  puts "Creating events..."
+  # Creating Events
+  print "Creating events... "
 
-  30.times do
+  50.times do
     sport = Sport.all.sample
 
     Event.create!(
@@ -48,8 +56,12 @@ require 'faker'
       date: Faker::Date.between(from: '2023-07-01', to: '2023-08-31'),
       participant_number: rand(2..10),
       duration: rand(1..3),
-      user_id: rand(1..3),
+      # user_id: rand(10..12), # locally
+      user_id: [12, 13, 15, 16, 17, 18].sample, # heroku
       description: "Looking for company to do my favorite sport"
     )
   end
-  puts "Events created"
+
+  puts "✅"
+
+  puts "Ready! 🎉"
