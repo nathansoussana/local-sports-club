@@ -35,7 +35,7 @@
     <%= f.input :location, required: true, input_html: { autocomplete: "address" }, hint: "Your current location" %>
 
     <% selected_sports = resource.sports.pluck(:id) %>
-      <%= f.input :sports, as: :select, collection: Sport.all, label: "Select sports", selected: selected_sports, input_html: { multiple: true } %>
+    <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "Select sports", selected: selected_sports %>
 
   <div class="form-actions">
     <%= f.button :submit, "Update", class: "btn btn-dark" %>
