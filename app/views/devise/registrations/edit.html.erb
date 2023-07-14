@@ -7,11 +7,8 @@
   <%= f.error_notification %>
 
   <div class="edit-form">
-    <div>
-     <%= link_to "Back", :back, class: "btn btn-dark" %>
-    </div>
-      <h2 class ="edit-heading">Edit <%= resource_name.to_s.humanize %></h2>
-    <%= f.input :email, required: true, autofocus: true %>
+      <h2 class ="edit-heading pt-4">Edit <%= resource_name.to_s.humanize %></h2>
+      <%= f.input :email, required: true, autofocus: true %>
 
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -42,9 +39,13 @@
 
   <div class="form-actions">
     <%= f.button :submit, "Update", class: "btn btn-dark" %>
+    <%= link_to "Back", :back, class: "btn btn-outline-dark" %>
+  </div>
 
-          <h5 class="cancel-question">Unhappy?<h5>
-          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-dark" %>
+
+  <div class="pt-5 pt-4">
+    <h5 class="cancel-question">Unhappy?<h5>
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-dark" %>
   </div>
 
 <% end %>
