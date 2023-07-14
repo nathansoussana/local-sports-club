@@ -47,9 +47,9 @@
             <h6>Host</h6>
             <div class="d-flex align-items-center">
               <% if @event.user.photo.attached? %>
-                <%= image_tag url_for(@event.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+                <%= image_tag url_for(@event.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-2" %>
               <% else %>
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-2" %>
               <% end %>
               <%= link_to "#{@event.user.first_name} #{@event.user.last_name}", user_path(@event.user), class: "text-decoration-none", style: "color: black;" %>
             </div>
@@ -69,18 +69,18 @@
       <% if policy(@event).edit? %>
         <div class="col-12 col-lg-6">
           <% if current_user.photo.attached? %>
-            <%= image_tag url_for(current_user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+            <%= image_tag url_for(current_user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
           <% else %>
-            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
           <% end %>
           <%= link_to "You (Host)", user_path(current_user), class: "text-decoration-none", style: "color: black;" %>
         </div>
       <% else %>
         <div class="col-12 col-lg-6">
           <% if @event.user.photo.attached? %>
-            <%= image_tag url_for(@event.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+            <%= image_tag url_for(@event.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
           <% else %>
-            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
           <% end %>
           <%= link_to "#{@event.user.first_name} #{@event.user.last_name}", user_path(@event.user), class: "text-decoration-none", style: "color: black;" %>
         </div>
@@ -88,9 +88,9 @@
       <% @event.participants.each do |participant| %>
         <div class="col-12 col-lg-6">
           <% if participant.user.photo.attached? %>
-            <%= image_tag url_for(participant.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+            <%= image_tag url_for(participant.user.photo), crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
           <% else %>
-            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle" %>
+            <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", crop: :fill, height: 35, width: 35, radius: "max", class: "rounded-circle me-1" %>
           <% end %>
           <%= link_to "#{participant.user.first_name} #{participant.user.last_name}", user_path(participant.user), class: "text-decoration-none", style: "color: black;" %>
         </div>
