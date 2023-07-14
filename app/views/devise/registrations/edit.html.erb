@@ -33,6 +33,14 @@
     <%= f.input :gender, collection: ['Male', 'Female', 'Other', 'Prefer not to say'], include_blank: true, hint: "Your gender" %>
     <%= f.input :about, as: :text, input_html: { rows: 5 }, hint: "Write a short description about yourself" %>
     <%= f.input :location, required: true, input_html: { autocomplete: "address" }, hint: "Your current location" %>
+    <% if resource.photo.attached? %>
+      <div>
+        <label>Current Photo:</label>
+        <%= cl_image_tag(resource.photo.key, crop: :fill, height: 100, width: 100, radius: "max", class: "mb-3") %>
+      </div>
+    <% end %>
+    <%= f.input :photo, as: :file, hint: "Upload a new profile photo" %>
+
 
     <% selected_sports = resource.sports.pluck(:id) %>
     <%= f.association :sports, as: :check_boxes, collection: Sport.all, label: "Select sports", selected: selected_sports %>
