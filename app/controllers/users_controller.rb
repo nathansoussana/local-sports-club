@@ -31,9 +31,11 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   def edit
     @user = User.find(params[:id])
-  end
+   end
+   
   def update
     @user = User.find(params[:id])
 
@@ -55,12 +57,15 @@ class UsersController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path, status: :see_other
   end
+
   private
+  
   def user_params
     params.require(:user).permit(:email, :password, :first_name, :last_name, :birth_date, :gender, :about, :location, :photo, sport_ids: [], levels: [])
   end
