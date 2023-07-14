@@ -36,7 +36,7 @@
               <% if current_user.photo.attached? %>
                 <%= image_tag url_for(current_user.photo), class: "avatar", alt: "dropdown menu" %>
               <% else %>
-                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar", alt: "dropdown menu" %>
+                <%= image_tag "https://www.pinclipart.com/picdir/middle/148-1486972_mystery-man-avatar-circle-clipart.png", class: "avatar avatar-navbar", alt: "dropdown menu" %>
               <% end %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
