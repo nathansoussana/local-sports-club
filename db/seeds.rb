@@ -56,8 +56,15 @@ require 'faker'
       date: Faker::Date.between(from: '2023-07-01', to: '2023-08-31'),
       participant_number: rand(2..10),
       duration: rand(1..3),
-      user_id: rand(10..12), # locally (you might need to change this based on your local user ids)
-      # user_id: [12, 13, 15, 16, 17, 18].sample, # heroku
+
+      # !IMPORTANT! Toggle between the two lines below depending on whether you are running the seeds locally or on Heroku
+      
+      # Locally (you might need to change this based on your local user ids)
+      # user_id: rand(10..12),
+      
+      # Heroku (might need an update if user ids change on Heroku)
+      user_id: [12, 13, 15, 16, 17, 18].sample,
+
       description: "Looking for company to do my favorite sport"
     )
   end
