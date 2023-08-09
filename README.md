@@ -6,7 +6,8 @@ The idea is simple: either browse for existing events and freely join one if the
 <br><br>
 The Local Sports Club was our final project at Le Wagon's Web Development bootcamp. It has been built with Ruby on Rails and is live at www.thelocalsportsclub.com.
 
-![Screenshot 2023-08-09 at 11 08 23](https://github.com/nathansoussana/local-sports-club/assets/85996279/cd535bab-322e-46eb-b8fc-b6b850e22b7a)
-![Screenshot 2023-08-09 at 11 05 27](https://github.com/nathansoussana/local-sports-club/assets/85996279/601e44d1-046f-4266-b9ca-666acb174b0a)
-![Screenshot 2023-08-09 at 10 58 55](https://github.com/nathansoussana/local-sports-club/assets/85996279/b94ec2ea-6a93-4ffa-b20c-ed6c73411864)
-
+<img width="400" alt="Screenshot 2023-08-09 at 12 02 56" src="https://github.com/nathansoussana/local-sports-club/assets/85996279/f40de7c0-59d6-415e-83ea-2b285644e0c7">
+<img width="400" alt="Screenshot 2023-08-09 at 12 04 08" src="https://github.com/nathansoussana/local-sports-club/assets/85996279/f3b369a4-abc8-4fa4-886b-26d353d0e24a">
+<img width="400" alt="Screenshot 2023-08-09 at 12 04 23" src="https://github.com/nathansoussana/local-sports-club/assets/85996279/96617cd2-0672-43b4-adb3-c365696ed058">
+<img width="400" alt="Screenshot 2023-08-09 at 12 04 31" src="https://github.com/nathansoussana/local-sports-club/assets/85996279/a4c8aeb8-3436-4909-9f40-b410b6bacf67">
+<img width="400" alt="Screenshot 2023-08-09 at 12 04 38" src="https://github.com/nathansoussana/local-sports-club/assets/85996279/be092b07-402f-4145-9e0d-bb680a2696ec">
